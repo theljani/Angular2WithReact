@@ -4,7 +4,7 @@ import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl} from '
 //service
 import {AccountRegisterWizardStateService} from '../_services/account.register.wizard.state.service';
 
-import {registerStore} from '../../../stores/register-store/store';
+import {registerStore} from '../../../stores/main.store';
 import {registerActions} from '../../../stores/register-store/actions';
 import {RegisterEntity} from '../_entities/register';
 import {UserDetails} from '../_entities/userDetails';

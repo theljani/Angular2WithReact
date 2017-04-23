@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {registerStore} from '../../stores/register-store/store';
+import {registerStore} from '../../stores/main.store';
 import {registerActions} from '../../stores/register-store/actions';
 import {Step} from '../../common/wizard-stepper/_entities/step';
 

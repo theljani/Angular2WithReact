@@ -5,7 +5,7 @@ import {FormBuilder, FormGroup, Validators,AbstractControl} from '@angular/forms
 import {AccountRegisterWizardStateService} from '../_services/account.register.wizard.state.service';
 
 // store
-import {registerStore} from '../../../stores/register-store/store';
+import {registerStore} from '../../../stores/main.store';
 import {RegisterEntity} from '../_entities/register';
 import {CompanyDetails} from '../_entities/companyDetails';
 import {registerActions} from '../../../stores/register-store/actions';

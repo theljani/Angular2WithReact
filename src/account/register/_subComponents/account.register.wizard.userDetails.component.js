@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 //service
 var account_register_wizard_state_service_1 = require("../_services/account.register.wizard.state.service");
-var store_1 = require("../../../stores/register-store/store");
+var main_store_1 = require("../../../stores/main.store");
 var actions_1 = require("../../../stores/register-store/actions");
 // registerStore
 var AccountRegisterWizardUserDetailsComponent = (function () {
@@ -44,8 +44,8 @@ var AccountRegisterWizardUserDetailsComponent = (function () {
     }
     AccountRegisterWizardUserDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var state = store_1.registerStore.getState();
-        this.registerEntity = store_1.registerStore.getState().registerEntity;
+        var state = main_store_1.registerStore.getState();
+        this.registerEntity = main_store_1.registerStore.getState().registerEntity;
         this.userDetails = this.registerEntity.userDetails;
         this.userDetailsForm = this._formBuilder.group({
             fullName: [this.userDetails ? this.userDetails.fullName : '', [forms_1.Validators.required, forms_1.Validators.minLength(4)]],
