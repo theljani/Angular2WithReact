@@ -1,0 +1,28 @@
+<!--<div class="stepper">
+  <div class="stepper_wrapper row col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+    <div class="stepper_wrapper_step" *ngFor="let step of steps">
+      <div class="stepper_wrapper_step_circle"><span>{{step.number}}</span></div>
+      <div class="stepper_wrapper_step_title"><span>{{step.title}}</span></div>
+      <div class="stepper_wrapper_step_bar"></div>
+    </div>
+  </div>
+</div>-->
+
+<div class="register_wizard">
+    <div class="register_wizard-stepper">
+        <wizard-stepper [steps]='steps' [activeStep]='activeStep'></wizard-stepper>
+    </div>
+
+    <div class="register_wizard-content">
+       <router-outlet></router-outlet>
+    </div>
+
+    <div class="register_wizard-actions">
+      <div class="btn-toolbar pull-right">
+        <button class="btn" [disabled]="activeStep.previousStep == null" (click)="Previous()">Previous</button>
+        <button class="btn" [disabled]="!isCurrentStepValid() || activeStep.nextStep == null" (click)="Next()">Next</button>
+        <button class="btn btn_confirm" [disabled]="!isFormValid()"  (click)="Confirm()">Confirm</button>
+      </div>
+    </div>
+</div>
+

@@ -1,0 +1,45 @@
+<div class="register_wizard_companyDetails">
+    <form [formGroup]="companyDetailsForm">
+        <div class="form-group"
+        [ngClass]="{'has-error': companyNameErrorMessage}">
+            <input type="text"
+                [(ngModel)]="companyDetails.name"
+                (ngModelChange)="ngOnChanges($event)"
+                formControlName="name"
+                class="form-control" placeholder="Company name" />
+
+                <span class="help-block" *ngIf="companyNameErrorMessage">
+                    {{companyNameErrorMessage}}
+                </span>
+        </div>
+
+        <div class="form-group"
+            [ngClass]="{'has-error': companyCodeErrorMessage }">
+            <input type="text"
+                [(ngModel)]="companyDetails.companyCode"
+                (ngModelChange)="ngOnChanges($event)"
+                formControlName="companyCode"
+                class="form-control" placeholder="Company code" />
+
+                <span class="help-block" *ngIf="companyCodeErrorMessage">
+                    {{companyCodeErrorMessage}}
+                </span>
+        </div>
+
+        <div class="form-group">
+            <input type="text"
+                [(ngModel)]="companyDetails.position"
+                (ngModelChange)="ngOnChanges($event)"
+                formControlName="position"
+                class="form-control" placeholder="Position" />
+        </div>
+
+        <div class="form-group">
+            <input type="text"
+                [(ngModel)]="companyDetails.website"
+                (ngModelChange)="ngOnChanges($event)"
+                formControlName="website"
+                class="form-control" placeholder="Web site url" />
+        </div>
+    </form>
+</div>

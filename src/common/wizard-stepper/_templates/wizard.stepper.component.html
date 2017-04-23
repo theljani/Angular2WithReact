@@ -1,0 +1,15 @@
+
+<div class="stepper">
+    <div class="stepper_steps">
+        <div 
+        class="stepper_step"
+        [ngStyle]="{'width': getCellsWidth()+'%'}"
+        *ngFor="let step of steps">
+            <span  [ngClass]="['stepper_step_number', getStepStyle(step)]">{{step.number}}</span>
+            <div [ngClass]="['stepper_step_bar', getStepStyle(step)]"></div>
+        </div>
+    </div>
+    <div class="stepper_title">
+        <span class="stepper_title-text">{{activeStep.title}}</span>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+.content {
+  background-color: #E0E6ED;
+  font-family: 'Gotham SSm', sans-serif; }
+
+.navigationBar {
+  background-color: #FFFFFF;
+  font-weight: 400;
+  border-bottom: 1px solid #E0E6ED;
+  position: relative;
+  line-height: 4rem;
+  min-height: 5.2rem; }
+
+.navigationBar__header {
+  float: left;
+  padding-top: 2px;
+  font-family: 'Gotham SSm', sans-serif; }
+
+.navigationBar__header__barButton .navbar-toggle {
+  margin: 5px 15px;
+  padding: 0; }
+
+.navigationBar__toggle {
+  float: right;
+  margin: 0; }
+
+.navigationBar__toggle__navigation {
+  display: inline-block;
+  margin: 0;
+  padding: 5px; }
+
+.navigationBar__toggle__navigation__item a {
+  color: gray; }
+
+.navigationBar__toggle__navigation__item a:link {
+  text-decoration: none; }
+
+.navigationBar__toggle__navigation__item a:hover {
+  text-decoration: none; }
+
+.navigationBar__toggle__navigation__item a:visited {
+  text-decoration: none; }
+
+.navigationBar__toggle__navigation__item a:active {
+  text-decoration: none; }
+
+.navigationBar__toggle__navigation__item__signin {
+  color: #5CB805; }
+
+.navigationBar__toggle__navigation__item__register a {
+  color: white;
+  padding: 5px 30px;
+  border-radius: 0px; }
+
+.navigationBar__header {
+  letter-spacing: 10px;
+  margin: 5px 0;
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px; }
+  .navigationBar__header a {
+    color: black; }
+  .navigationBar__header a:link {
+    text-decoration: none;
+    color: black; }
+  .navigationBar__header a:hover {
+    text-decoration: none;
+    color: red; }
+  .navigationBar__header a:visited {
+    text-decoration: none; }
+  .navigationBar__header a:active {
+    text-decoration: none; }
+
+.account {
+  font-family: 'Gotham SSm', sans-serif;
+  width: 500px;
+  border: 1px solid black;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto; }
+  .account .account_btn {
+    width: 100px;
+    height: 50px;
+    background-color: blue;
+    border: 1px solid red; }
+
+.signin {
+  margin: 50px 0;
+  font-family: 'Gotham SSm', sans-serif; }
+  .signin .panel {
+    border-radius: 0px; }
+  .signin .panel-heading {
+    height: 80px;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 20px;
+    border-bottom: 1px solid lightgray; }
+  .signin .signin__buttons {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0px 30px 16px 30px;
+    border-bottom: 1px solid lightgray;
+    height: auto; }
+    .signin .signin__buttons button {
+      border-radius: 0px;
+      background-color: white;
+      border: 1px solid lightgray; }
+      .signin .signin__buttons button:hover {
+        color: white;
+        background-color: #323241; }
+  .signin .signin__form {
+    padding: 0 30px;
+    margin-top: 30px; }
+    .signin .signin__form input {
+      border-radius: 0px;
+      height: 40px; }
+    .signin .signin__form .signin__form__connectButton button {
+      background-color: #5cb85c;
+      color: white;
+      padding: 8px 30px;
+      border-radius: 0px; }
+      .signin .signin__form .signin__form__connectButton button:hover {
+        background-color: #5CB805; }
+  .signin .signin__registerInstruction {
+    cursor: pointer;
+    color: #5CB805; }
+    .signin .signin__registerInstruction a {
+      text-decoration: none; }
+
+.register {
+  margin: 50px 0;
+  font-family: 'Gotham SSm', sans-serif; }
+  .register .panel {
+    border-radius: 0px; }
+  .register .panel-heading {
+    height: 80px;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 20px;
+    border-bottom: 1px solid lightgray; }
+  .register .register__form {
+    padding: 0 30px;
+    margin-top: 30px; }
+    .register .register__form input {
+      border-radius: 0px;
+      height: 40px; }
+    .register .register__form .register__form__registerButton button {
+      background-color: #5cb85c;
+      color: white;
+      padding: 8px 30px;
+      border-radius: 0px; }
+      .register .register__form .register__form__registerButton button:hover {
+        background-color: #5CB805; }
+  .register .register__signinInstruction {
+    cursor: pointer;
+    color: #5CB805; }
+    .register .register__signinInstruction a {
+      text-decoration: none; }

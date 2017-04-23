@@ -1,0 +1,57 @@
+<div class="register_wizard_userDetails">
+    <form [formGroup]="userDetailsForm">
+        <div class="form-group"
+        [ngClass]="{'has-error': fullNameErrorMessage}">
+            <input type="text"
+                formControlName="fullName"
+                [(ngModel)]="userDetails.fullName"
+                (ngModelChange)="ngOnChanges($event)"
+                class="form-control" 
+                placeholder="Full Name">
+            <span class="help-block" *ngIf="fullNameErrorMessage">
+                {{fullNameErrorMessage}}
+            </span>
+        </div>
+
+        <div class="form-group"
+        [ngClass]="{'has-error': phoneNumberErrorMessage}">
+            <input type="text" 
+            [(ngModel)]="userDetails.phoneNumber"
+            (ngModelChange)="ngOnChanges($event)"
+            formControlName="phoneNumber" class="form-control" placeholder="Phone number">
+            <span class="help-block" *ngIf="phoneNumberErrorMessage">
+                {{phoneNumberErrorMessage}}
+            </span>
+        </div>
+
+        <div class="form-group">
+            <input type="text" 
+            [(ngModel)]="userDetails.address.addressLine"
+            (ngModelChange)="ngOnChanges($event)"
+            formControlName="addressLine" class="form-control" placeholder="Address line">
+        </div>
+
+
+        <div class="form-group">
+            <input type="text" 
+            [(ngModel)]="userDetails.address.zipCode"
+            (ngModelChange)="ngOnChanges($event)"
+            formControlName="zipCode" class="form-control" placeholder="Postal code">
+        </div>
+
+        <div class="form-group">
+            <input type="text" 
+            [(ngModel)]="userDetails.address.city"
+            (ngModelChange)="ngOnChanges($event)"
+            formControlName="city" class="form-control" placeholder="City">
+        </div>
+
+        <div class="form-group">
+            <input type="text" 
+            [(ngModel)]="userDetails.address.country"
+            (ngModelChange)="ngOnChanges($event)"
+            formControlName="country" class="form-control" placeholder="Country">
+        </div>
+    </form>
+
+</div>
