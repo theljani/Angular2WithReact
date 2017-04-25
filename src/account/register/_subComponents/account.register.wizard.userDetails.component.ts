@@ -4,8 +4,8 @@ import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl} from '
 //service
 import {AccountRegisterWizardStateService} from '../_services/account.register.wizard.state.service';
 
-import {registerStore} from '../../../stores/main.store';
-import {registerActions} from '../../../stores/register-store/actions';
+import {registerStore} from '../_store/store';
+import {registerActions} from '../_store/actions';
 import {RegisterEntity} from '../_entities/register';
 import {UserDetails} from '../_entities/userDetails';
 // registerStore
@@ -87,7 +87,7 @@ export class AccountRegisterWizardUserDetailsComponent implements OnInit, OnChan
        });
 
         this.phoneNumberControl.valueChanges.subscribe((value: any) => {
-            this.setValidationForphoneNumber(this.phoneNumberControl);
+            this.setValidationForPhoneNumber(this.phoneNumberControl);
             
             this.accountRegisterWizardStateService.setUserDetailsStepSatate(this.fullNameControl.valid && this.phoneNumberControl.valid);
         });       
@@ -107,7 +107,7 @@ export class AccountRegisterWizardUserDetailsComponent implements OnInit, OnChan
         }
     }
 
-    setValidationForphoneNumber(control: AbstractControl) : void {
+    setValidationForPhoneNumber(control: AbstractControl) : void {
         this.phoneNumberErrorMessage = '';
 
         if((control.touched || control.dirty) && control.errors) {

@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var main_store_1 = require("../../stores/main.store");
-var actions_1 = require("../../stores/register-store/actions");
+var store_1 = require("./_store/store");
+var actions_1 = require("./_store/actions");
 var wizard_stepper_component_1 = require("../../common/wizard-stepper/wizard.stepper.component");
 // Services
 var account_register_wizard_state_service_1 = require("./_services/account.register.wizard.state.service");
@@ -112,14 +112,14 @@ var AccountRegisterComponent = (function () {
         return state;
     };
     AccountRegisterComponent.prototype.updateFromState = function () {
-        var registerFormState = main_store_1.registerStore.getState();
+        var registerFormState = store_1.registerStore.getState();
         this.registerEntity = registerFormState.registerEntity;
     };
     AccountRegisterComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activeStep = this.steps[0];
         this.updateFromState();
-        main_store_1.registerStore.subscribe(function () {
+        store_1.registerStore.subscribe(function () {
             _this.updateFromState();
         });
         this._router.navigate([this.activeStep.contentRoute]);

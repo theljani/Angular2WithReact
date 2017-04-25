@@ -14,8 +14,8 @@ var forms_1 = require("@angular/forms");
 //service
 var account_register_wizard_state_service_1 = require("../_services/account.register.wizard.state.service");
 // store
-var main_store_1 = require("../../../stores/main.store");
-var actions_1 = require("../../../stores/register-store/actions");
+var store_1 = require("../_store/store");
+var actions_1 = require("../_store/actions");
 var AccountRegisterWizardCompanyDetailsComponent = (function () {
     function AccountRegisterWizardCompanyDetailsComponent(_formBuilder, accountRegisterWizardStateService) {
         this._formBuilder = _formBuilder;
@@ -35,8 +35,8 @@ var AccountRegisterWizardCompanyDetailsComponent = (function () {
     }
     AccountRegisterWizardCompanyDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var state = main_store_1.registerStore.getState();
-        this.registerEntity = main_store_1.registerStore.getState().registerEntity;
+        var state = store_1.registerStore.getState();
+        this.registerEntity = store_1.registerStore.getState().registerEntity;
         this.companyDetails = this.registerEntity.companyDetails;
         this.companyDetailsForm = this._formBuilder.group({
             name: [this.companyDetails.name, forms_1.Validators.required],

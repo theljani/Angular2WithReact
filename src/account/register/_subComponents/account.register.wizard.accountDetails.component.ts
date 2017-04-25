@@ -6,8 +6,8 @@ import {RegisterEntity} from '../../register/_entities/register';
 import {AccountDetails} from '../../register/_entities/accountDetails';
 
 //registerStore
-import {registerStore} from '../../../stores/main.store';
-import {registerActions} from '../../../stores/register-store/actions'
+import {registerStore} from '../_store/store';
+import {registerActions} from '../_store/actions';
 
 //service
 import {AccountRegisterWizardStateService} from '../_services/account.register.wizard.state.service';

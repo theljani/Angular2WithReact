@@ -13,8 +13,8 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 //service
 var account_register_wizard_state_service_1 = require("../_services/account.register.wizard.state.service");
-var main_store_1 = require("../../../stores/main.store");
-var actions_1 = require("../../../stores/register-store/actions");
+var store_1 = require("../_store/store");
+var actions_1 = require("../_store/actions");
 // registerStore
 var AccountRegisterWizardUserDetailsComponent = (function () {
     function AccountRegisterWizardUserDetailsComponent(_formBuilder, accountRegisterWizardStateService) {
@@ -44,8 +44,8 @@ var AccountRegisterWizardUserDetailsComponent = (function () {
     }
     AccountRegisterWizardUserDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var state = main_store_1.registerStore.getState();
-        this.registerEntity = main_store_1.registerStore.getState().registerEntity;
+        var state = store_1.registerStore.getState();
+        this.registerEntity = store_1.registerStore.getState().registerEntity;
         this.userDetails = this.registerEntity.userDetails;
         this.userDetailsForm = this._formBuilder.group({
             fullName: [this.userDetails ? this.userDetails.fullName : '', [forms_1.Validators.required, forms_1.Validators.minLength(4)]],
@@ -66,7 +66,7 @@ var AccountRegisterWizardUserDetailsComponent = (function () {
             _this.accountRegisterWizardStateService.setUserDetailsStepSatate(_this.fullNameControl.valid && _this.phoneNumberControl.valid);
         });
         this.phoneNumberControl.valueChanges.subscribe(function (value) {
-            _this.setValidationForphoneNumber(_this.phoneNumberControl);
+            _this.setValidationForPhoneNumber(_this.phoneNumberControl);
             _this.accountRegisterWizardStateService.setUserDetailsStepSatate(_this.fullNameControl.valid && _this.phoneNumberControl.valid);
         });
     };
@@ -82,7 +82,7 @@ var AccountRegisterWizardUserDetailsComponent = (function () {
                 .map(function (key) { return _this.validationMessages.fullName[key]; }).join(' ');
         }
     };
-    AccountRegisterWizardUserDetailsComponent.prototype.setValidationForphoneNumber = function (control) {
+    AccountRegisterWizardUserDetailsComponent.prototype.setValidationForPhoneNumber = function (control) {
         var _this = this;
         this.phoneNumberErrorMessage = '';
         if ((control.touched || control.dirty) && control.errors) {

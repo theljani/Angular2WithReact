@@ -12,8 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 //registerStore
-var main_store_1 = require("../../../stores/main.store");
-var actions_1 = require("../../../stores/register-store/actions");
+var store_1 = require("../_store/store");
+var actions_1 = require("../_store/actions");
 //service
 var account_register_wizard_state_service_1 = require("../_services/account.register.wizard.state.service");
 function PasswordsMatcher(control) {
@@ -59,7 +59,7 @@ var AccountRegisterWizardAccountDetailsComponent = (function () {
     }
     AccountRegisterWizardAccountDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var state = main_store_1.registerStore.getState();
+        var state = store_1.registerStore.getState();
         this.registerEntity = state.registerEntity;
         this.accountDetails = this.registerEntity.accountDetails;
         this.accountDetails.companyCode = this.registerEntity.companyDetails.companyCode;

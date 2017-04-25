@@ -5,10 +5,10 @@ import {FormBuilder, FormGroup, Validators,AbstractControl} from '@angular/forms
 import {AccountRegisterWizardStateService} from '../_services/account.register.wizard.state.service';
 
 // store
-import {registerStore} from '../../../stores/main.store';
+import {registerStore} from '../_store/store';
+import {registerActions} from '../_store/actions';
 import {RegisterEntity} from '../_entities/register';
 import {CompanyDetails} from '../_entities/companyDetails';
-import {registerActions} from '../../../stores/register-store/actions';
 
 @Component({
     selector: 'pt-register-wizard-company-details',
