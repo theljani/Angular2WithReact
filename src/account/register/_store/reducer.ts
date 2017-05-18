@@ -1,28 +1,23 @@
-import {RegisterEntity} from '../_entities/register';
+import {CompanyRegister} from '../_entities/companyRegister';
 import {USER_DETAILS_FORM_UPDATED, COMPANY_DETAILS_FORM_UPDATED, ACCOUNT_DETAILS_FORM_UPDATED} from './actions';
 import {IRegisterState} from './IRegisterState';
 
 const initialState: IRegisterState = {
     registerEntity: {
-        userDetails: {
-            fullName: '',
-            phoneNumber: '',
-            address: {
-                addressLine: '',
-                city: '',
-                country: '',
-                zipCode: ''
-            }
-        },
-        companyDetails: {
+        companyInfo: {
             name: '',
             companyCode: '',
-            position: '',
-            website: ''
+            phoneNumber: '',
+            webSite: ''
+        },
+        companyAddress: {
+            addressLine: '',
+            city: '',
+            postalCode: '',
+            country: ''
         },
         accountDetails: {
             login: '',
-            companyCode: '',
             password: '',
             confirmPassword: ''
         }
@@ -32,13 +27,19 @@ const initialState: IRegisterState = {
 export function registerReducer(state: IRegisterState, action: any) {
     switch(action.type) {
         case USER_DETAILS_FORM_UPDATED:
-            return {"registerEntity": action.payload};
+            return Object.assign({}, state, {
+                registerEntity: action.payload
+            });
         
         case COMPANY_DETAILS_FORM_UPDATED:
-            return {"registerEntity": action.payload};
+            return Object.assign({}, state, {
+                registerEntity: action.payload
+            });
 
         case ACCOUNT_DETAILS_FORM_UPDATED:
-            return {"registerEntity": action.payload};
+            return Object.assign({}, state, {
+                registerEntity: action.payload
+            });
 
         default:
             return state ? state : initialState;

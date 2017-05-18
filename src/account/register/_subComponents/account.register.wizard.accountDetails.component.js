@@ -29,14 +29,10 @@ function PasswordsMatcher(control) {
 }
 ;
 var AccountRegisterWizardAccountDetailsComponent = (function () {
-    function AccountRegisterWizardAccountDetailsComponent(_formBuilder, accountRegisterWizardStateService) {
+    function AccountRegisterWizardAccountDetailsComponent(_formBuilder, AccountRegisterService, actionDispatcher) {
         this._formBuilder = _formBuilder;
-        this.accountRegisterWizardStateService = accountRegisterWizardStateService;
-        this.registerEntity = {
-            userDetails: null,
-            accountDetails: null,
-            companyDetails: null
-        };
+        this.AccountRegisterService = AccountRegisterService;
+        this.actionDispatcher = actionDispatcher;
         this.validationMessages = {
             login: {
                 required: 'Please enter your login.',
@@ -48,21 +44,14 @@ var AccountRegisterWizardAccountDetailsComponent = (function () {
             confirmPassword: {
                 required: 'Please confirm your password.',
                 mismatch: 'Passwords do not match.'
-            },
-            companyCode: {
-                required: 'Please enter your company code.',
-                minlength: 'company code length must be 8.',
-                maxlength: 'company code length must be 8.'
             }
         };
-        this.actionDispatcher = new actions_1.registerActions();
     }
     AccountRegisterWizardAccountDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         var state = store_1.registerStore.getState();
         this.registerEntity = state.registerEntity;
         this.accountDetails = this.registerEntity.accountDetails;
-        this.accountDetails.companyCode = this.registerEntity.companyDetails.companyCode;
         this.accountDetailsForm = this._formBuilder.group({
             login: [this.accountDetails.login, [forms_1.Validators.required, forms_1.Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
             passwordGroup: this._formBuilder.group({
@@ -132,7 +121,7 @@ var AccountRegisterWizardAccountDetailsComponent = (function () {
         return errorMessage;
     };
     AccountRegisterWizardAccountDetailsComponent.prototype.setAccountFormState = function () {
-        this.accountRegisterWizardStateService.setAccountDetailsStepState(this.loginFormControl.valid &&
+        this.AccountRegisterService.setAccountDetailsStepState(this.loginFormControl.valid &&
             this.passwordFormControl.valid &&
             this.confirmPasswordFormControl.valid &&
             this.accountDetailsForm.get('passwordGroup').valid);
@@ -146,7 +135,9 @@ AccountRegisterWizardAccountDetailsComponent = __decorate([
         templateUrl: '../_templates/account.register.wizard.accountDetails.component.html',
         styleUrls: ['../_styles/account.register.wizard.accountDetails.component.css']
     }),
-    __metadata("design:paramtypes", [forms_1.FormBuilder, account_register_wizard_state_service_1.AccountRegisterWizardStateService])
+    __metadata("design:paramtypes", [forms_1.FormBuilder,
+        account_register_wizard_state_service_1.AccountRegisterService,
+        actions_1.registerActions])
 ], AccountRegisterWizardAccountDetailsComponent);
 exports.AccountRegisterWizardAccountDetailsComponent = AccountRegisterWizardAccountDetailsComponent;
 //# sourceMappingURL=account.register.wizard.accountDetails.component.js.map

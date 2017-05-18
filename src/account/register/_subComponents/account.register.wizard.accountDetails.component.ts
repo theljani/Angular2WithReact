@@ -2,7 +2,7 @@ import {Component, OnInit, OnChanges} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
 
 // entities
-import {RegisterEntity} from '../../register/_entities/register';
+import {CompanyRegister} from '../../register/_entities/companyRegister';
 import {AccountDetails} from '../../register/_entities/accountDetails';
 
 //registerStore
@@ -10,7 +10,7 @@ import {registerStore} from '../_store/store';
 import {registerActions} from '../_store/actions';
 
 //service
-import {AccountRegisterWizardStateService} from '../_services/account.register.wizard.state.service';
+import {AccountRegisterService} from '../_services/account.register.wizard.state.service';
 
 function PasswordsMatcher(control: AbstractControl): {[key: string] : boolean } | null {
     let password = control.get('password');
@@ -35,14 +35,8 @@ function PasswordsMatcher(control: AbstractControl): {[key: string] : boolean } 
 })
 export class AccountRegisterWizardAccountDetailsComponent implements OnInit, OnChanges {
     accountDetailsForm: FormGroup;
-    actionDispatcher: registerActions;
     accountDetails: AccountDetails;
-    registerEntity: RegisterEntity = {
-        userDetails: null,
-        accountDetails: null,
-        companyDetails: null
-    };
-
+    registerEntity: CompanyRegister;
     // Form controls
     loginFormControl: AbstractControl;
     passwordFormControl: AbstractControl;
@@ -65,16 +59,12 @@ export class AccountRegisterWizardAccountDetailsComponent implements OnInit, OnC
         confirmPassword: {
             required: 'Please confirm your password.',
             mismatch: 'Passwords do not match.'
-        },
-        companyCode: {
-            required: 'Please enter your company code.',
-            minlength: 'company code length must be 8.',
-            maxlength: 'company code length must be 8.'
         }
     };
 
-    constructor(private _formBuilder: FormBuilder, private accountRegisterWizardStateService: AccountRegisterWizardStateService) {
-        this.actionDispatcher = new registerActions();
+    constructor(private _formBuilder: FormBuilder, 
+        private AccountRegisterService: AccountRegisterService,
+        private actionDispatcher: registerActions) {
     }
 
     ngOnInit(): void {
@@ -82,9 +72,7 @@ export class AccountRegisterWizardAccountDetailsComponent implements OnInit, OnC
         this.registerEntity = state.registerEntity;
 
         this.accountDetails = this.registerEntity.accountDetails;
-
-        this.accountDetails.companyCode = this.registerEntity.companyDetails.companyCode;
-
+        
         this.accountDetailsForm = this._formBuilder.group({
             login: [this.accountDetails.login, [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
             passwordGroup: this._formBuilder.group({
@@ -172,7 +160,7 @@ export class AccountRegisterWizardAccountDetailsComponent implements OnInit, OnC
     }
 
     setAccountFormState(): void {
-        this.accountRegisterWizardStateService.setAccountDetailsStepState(
+        this.AccountRegisterService.setAccountDetailsStepState(
             this.loginFormControl.valid &&
             this.passwordFormControl.valid &&
             this.confirmPasswordFormControl.valid &&

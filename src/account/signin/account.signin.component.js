@@ -10,18 +10,79 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
 var account_signin_service_1 = require("./_services/account.signin.service");
+var actions_1 = require("./_store/actions");
+var store_1 = require("./_store/store");
 var AccountSigninComponent = (function () {
-    function AccountSigninComponent(_accountSigninService) {
+    function AccountSigninComponent(_accountSigninService, _formBuilder, _signinAction, _router) {
         this._accountSigninService = _accountSigninService;
+        this._formBuilder = _formBuilder;
+        this._signinAction = _signinAction;
+        this._router = _router;
+        this.loginErrorMessage = '';
+        this.passwordErrorMessage = '';
+        this.signInResponse = {};
+        this.validationMessages = {
+            login: {
+                required: 'Please enter you email address.',
+                email: 'Please enter a valid email address.'
+            },
+            password: {
+                required: 'Please enter your password.'
+            }
+        };
     }
+    AccountSigninComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.signinFormGroup = this._formBuilder.group({
+            login: ['', [forms_1.Validators.required, forms_1.Validators.email]],
+            password: ['', [forms_1.Validators.required]]
+        });
+        this.loginFormControl = this.signinFormGroup.get('login');
+        this.passwordFormControl = this.signinFormGroup.get('password');
+        this.loginFormControl.valueChanges.subscribe(function (value) {
+            _this.setValidationForLogin(_this.loginFormControl);
+        });
+        this.passwordFormControl.valueChanges.subscribe(function (value) {
+            _this.setValidationForPassword(_this.passwordFormControl);
+        });
+        store_1.signinStore.subscribe(function () {
+            _this.signInResponse = store_1.signinStore.getState();
+            if (_this.signInResponse.ok) {
+                _this._router.navigate(['/account/register']);
+            }
+            else {
+                _this.backendError = _this.signInResponse.signinEntity.error;
+            }
+        });
+    };
+    AccountSigninComponent.prototype.setValidationForLogin = function (control) {
+        var _this = this;
+        this.loginErrorMessage = '';
+        if ((control.touched || control.dirty) && control.errors) {
+            this.loginErrorMessage = Object.keys(control.errors)
+                .map(function (key) { return _this.validationMessages.login[key]; }).join(' ');
+        }
+    };
+    AccountSigninComponent.prototype.setValidationForPassword = function (control) {
+        var _this = this;
+        this.passwordErrorMessage = '';
+        if ((control.touched || control.dirty) && control.errors) {
+            this.passwordErrorMessage = Object.keys(control.errors)
+                .map(function (key) { return _this.validationMessages.password[key]; }).join(' ');
+        }
+    };
     AccountSigninComponent.prototype.signIn = function () {
         var signinModel = {
-            login: this.login,
-            password: this.password
+            signinEntity: {
+                login: this.login,
+                password: this.password
+            }
         };
-        var result = this._accountSigninService.signIn(signinModel);
-        alert(result);
+        this.backendError = '';
+        this._signinAction.signin(signinModel);
     };
     return AccountSigninComponent;
 }());
@@ -32,7 +93,10 @@ AccountSigninComponent = __decorate([
         templateUrl: '_templates/account.signin.component.html',
         styleUrls: ['_styles/account.signin.component.css']
     }),
-    __metadata("design:paramtypes", [account_signin_service_1.AccountSigninService])
+    __metadata("design:paramtypes", [account_signin_service_1.AccountSigninService,
+        forms_1.FormBuilder,
+        actions_1.signinActions,
+        router_1.Router])
 ], AccountSigninComponent);
 exports.AccountSigninComponent = AccountSigninComponent;
 //# sourceMappingURL=account.signin.component.js.map

@@ -5,34 +5,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var AccountRegisterWizardStateService = (function () {
-    function AccountRegisterWizardStateService() {
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/map");
+var AccountRegisterService = (function () {
+    function AccountRegisterService(_http) {
+        this._http = _http;
+        this._registerUrl = 'http://localhost:2734/api/account/company/register';
         this.wizardState = {
-            isUserDetailsSetpValid: false,
-            isCompanyDetailsStepValid: false,
+            isCompanyInfoStepValid: false,
+            isCompanyAddressStepValid: false,
             isAccountDetailsStepValid: false
         };
     }
-    AccountRegisterWizardStateService.prototype.setUserDetailsStepSatate = function (state) {
-        this.wizardState.isUserDetailsSetpValid = state;
+    AccountRegisterService.prototype.setCompanyAddressStepSatate = function (state) {
+        this.wizardState.isCompanyAddressStepValid = state;
     };
-    AccountRegisterWizardStateService.prototype.setCompanyDetailsStepState = function (state) {
-        this.wizardState.isCompanyDetailsStepValid = state;
+    AccountRegisterService.prototype.setCompanyInfoStepState = function (state) {
+        this.wizardState.isCompanyInfoStepValid = state;
     };
-    AccountRegisterWizardStateService.prototype.setAccountDetailsStepState = function (state) {
+    AccountRegisterService.prototype.setAccountDetailsStepState = function (state) {
         this.wizardState.isAccountDetailsStepValid = state;
     };
-    AccountRegisterWizardStateService.prototype.isWizardValid = function () {
-        return this.wizardState.isUserDetailsSetpValid
-            && this.wizardState.isCompanyDetailsStepValid
+    AccountRegisterService.prototype.isWizardValid = function () {
+        return this.wizardState.isCompanyInfoStepValid
+            && this.wizardState.isCompanyAddressStepValid
             && this.wizardState.isAccountDetailsStepValid;
     };
-    return AccountRegisterWizardStateService;
+    AccountRegisterService.prototype.register = function (registerModel) {
+        return this._http.post(this._registerUrl, registerModel);
+    };
+    return AccountRegisterService;
 }());
-AccountRegisterWizardStateService = __decorate([
-    core_1.Injectable()
-], AccountRegisterWizardStateService);
-exports.AccountRegisterWizardStateService = AccountRegisterWizardStateService;
+AccountRegisterService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], AccountRegisterService);
+exports.AccountRegisterService = AccountRegisterService;
 //# sourceMappingURL=account.register.wizard.state.service.js.map

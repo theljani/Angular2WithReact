@@ -1,6 +1,6 @@
-export class Address {
+export class CompanyAddress {
     addressLine: string;
-    zipCode: string;
+    postalCode: string;
     city: string;
     country: string;
 }

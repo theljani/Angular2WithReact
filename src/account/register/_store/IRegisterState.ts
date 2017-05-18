@@ -1,5 +1,5 @@
-import {RegisterEntity} from '../_entities/register';
+import {CompanyRegister} from '../_entities/companyRegister';
 
 export interface IRegisterState {
-    registerEntity: RegisterEntity
+    registerEntity: CompanyRegister
 }

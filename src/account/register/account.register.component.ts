@@ -7,9 +7,10 @@ import {Step} from '../../common/wizard-stepper/_entities/step';
 
 import {WizardStepperComponent} from '../../common/wizard-stepper/wizard.stepper.component';
 
-import {RegisterEntity} from './_entities/register';
+import {CompanyRegister} from './_entities/companyRegister';
+import {IRegisterState} from './_store/IRegisterState';
 // Services
-import {AccountRegisterWizardStateService} from './_services/account.register.wizard.state.service';
+import {AccountRegisterService} from './_services/account.register.wizard.state.service';
 
 @Component({
     moduleId:module.id,
@@ -20,26 +21,24 @@ export class AccountRegisterComponent implements OnInit {
 
     @ViewChild(WizardStepperComponent) wizardStepperChild: WizardStepperComponent;
     activeStep: Step = null;
-    registerWizardState: AccountRegisterWizardStateService;
-    registerEntity: RegisterEntity;
-    actionDispatcher: registerActions;
+    registerEntity: CompanyRegister;
 
     steps: Step[] = [
         {
             "number": 1,
-            "title": "Personal details",
+            "title": "Company details",
             "state": 'active',
             "nextStep": 2,
             "previousStep": null,
-            "contentRoute": "/account/register/userDetails"
+            "contentRoute": "/account/register/companyInfo"
         },
         {
             "number": 2,
-            "title": "Company details",
+            "title": "Company address",
             "state": null,
             "nextStep": 3,
             "previousStep": 1,
-            "contentRoute": "/account/register/companyDetails"
+            "contentRoute": "/account/register/companyAddress"
         },
         {
             "number": 3,
@@ -51,9 +50,9 @@ export class AccountRegisterComponent implements OnInit {
         }       
     ];
 
-    constructor(private _router: Router, accountRegisterWizardStateService: AccountRegisterWizardStateService) {
-        this.registerWizardState = accountRegisterWizardStateService;
-        this.actionDispatcher = new registerActions();    
+    constructor(private _router: Router,
+        private actionsDispatcher: registerActions,
+        private registerWizardState: AccountRegisterService) {
     }
     
     Next():void {
@@ -94,13 +93,15 @@ export class AccountRegisterComponent implements OnInit {
 
     Confirm(): void {
         this.activeStep.state = 'done';
-        this.actionDispatcher.createAccount(this.registerEntity);
+        let state = this.updateFromState();
+        
+        this.actionsDispatcher.createAccount(state);
     }
 
     isFormValid(): boolean {
         if(this.activeStep.nextStep == null 
-        && this.registerWizardState.wizardState.isUserDetailsSetpValid
-        && this.registerWizardState.wizardState.isCompanyDetailsStepValid
+        && this.registerWizardState.wizardState.isCompanyInfoStepValid
+        && this.registerWizardState.wizardState.isCompanyAddressStepValid
         && this.registerWizardState.wizardState.isAccountDetailsStepValid) {
             return true;
         }
@@ -112,15 +113,15 @@ export class AccountRegisterComponent implements OnInit {
             var wizardStateService= this.registerWizardState;
             let state = false;
             if(this.activeStep == null) {
-                state = wizardStateService.wizardState.isUserDetailsSetpValid;
+                state = wizardStateService.wizardState.isCompanyInfoStepValid;
             } else {
                 switch(this.activeStep.number.toString()) {
                     case "1":
-                        state = wizardStateService.wizardState.isUserDetailsSetpValid;
+                        state = wizardStateService.wizardState.isCompanyInfoStepValid;
                     break;
 
                     case "2":
-                        state = wizardStateService.wizardState.isCompanyDetailsStepValid;
+                        state = wizardStateService.wizardState.isCompanyAddressStepValid;
                     break;
 
                     case "3":
@@ -132,18 +133,19 @@ export class AccountRegisterComponent implements OnInit {
             return state;
     }
 
-    updateFromState() {
+    updateFromState(): IRegisterState {
         const registerFormState = registerStore.getState();
         this.registerEntity = registerFormState.registerEntity;
+        return registerFormState;
     }
 
     ngOnInit(): void {
         this.activeStep = this.steps[0];
-        this.updateFromState();
+        // this.updateFromState();
 
-        registerStore.subscribe(() => {
-            this.updateFromState();
-        });
+        // registerStore.subscribe(() => {
+        //     this.updateFromState();
+        // });
 
         this._router.navigate([this.activeStep.contentRoute]);
     }

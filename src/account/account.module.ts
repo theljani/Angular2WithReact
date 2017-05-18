@@ -3,24 +3,29 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import {HttpModule} from '@angular/http';
 
 // Import Components
 import {AccountSigninComponent} from './signin/account.signin.component';
 import {AccountRegisterComponent} from './register/account.register.component';
 import {WizardStepperComponent} from '../common/wizard-stepper/wizard.stepper.component';
 
-import {AccountRegisterWizardUserDetailsComponent} from './register/_subComponents/account.register.wizard.userDetails.component';
-import {AccountRegisterWizardCompanyDetailsComponent} from './register/_subComponents/account.register.wizard.companyDetails.component';
+import {AccountRegisterWizardCompanyAddressComponent} from './register/_subComponents/account.register.wizard.companyAddress.component';
+import {AccountRegisterWizardCompanyInfoComponent} from './register/_subComponents/account.register.wizard.companyInfo.component';
 import {AccountRegisterWizardAccountDetailsComponent} from './register/_subComponents/account.register.wizard.accountDetails.component';
 
 // Import Services
 import {AccountSigninService} from './signin/_services/account.signin.service';
-import {AccountRegisterWizardStateService} from './register/_services/account.register.wizard.state.service';
+import {AccountRegisterService} from './register/_services/account.register.wizard.state.service';
+import {registerActions} from './register/_store/actions';
+import {signinActions} from './signin/_store/actions';
+
 @NgModule({
     imports: [
         CommonModule,  
         ReactiveFormsModule,     
         FormsModule,
+        HttpModule,
         RouterModule.forRoot([
             {
                 path:'account/signin', component: AccountSigninComponent
@@ -28,11 +33,14 @@ import {AccountRegisterWizardStateService} from './register/_services/account.re
             {
                 path:'account/register', component: AccountRegisterComponent,
                 children: [
-                    { path: '',  component: AccountRegisterWizardUserDetailsComponent},
-                    { path: 'userDetails',  component: AccountRegisterWizardUserDetailsComponent},
-                    { path: 'companyDetails',  component: AccountRegisterWizardCompanyDetailsComponent},
+                    { path: '',  component: AccountRegisterWizardCompanyInfoComponent},
+                    { path: 'companyInfo',  component: AccountRegisterWizardCompanyInfoComponent},
+                    { path: 'companyAddress',  component: AccountRegisterWizardCompanyAddressComponent},
                     { path: 'accountDetails',  component: AccountRegisterWizardAccountDetailsComponent}
                 ]
+            },
+            {
+                path:'', component: AccountSigninComponent
             },
             {
                 path: '**', redirectTo:'', pathMatch: 'full'
@@ -42,11 +50,14 @@ import {AccountRegisterWizardStateService} from './register/_services/account.re
     declarations: [
         AccountSigninComponent,
         AccountRegisterComponent,
-        AccountRegisterWizardUserDetailsComponent,
-        AccountRegisterWizardCompanyDetailsComponent,
+        AccountRegisterWizardCompanyAddressComponent,
+        AccountRegisterWizardCompanyInfoComponent,
         AccountRegisterWizardAccountDetailsComponent,
         WizardStepperComponent
     ],
-    providers: [AccountSigninService, AccountRegisterWizardStateService]
+    providers: [AccountSigninService, 
+                AccountRegisterService, 
+                registerActions,
+                signinActions]
 })
 export class AccountModule {}

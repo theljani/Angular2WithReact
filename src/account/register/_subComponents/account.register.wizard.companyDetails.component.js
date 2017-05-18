@@ -17,9 +17,10 @@ var account_register_wizard_state_service_1 = require("../_services/account.regi
 var store_1 = require("../_store/store");
 var actions_1 = require("../_store/actions");
 var AccountRegisterWizardCompanyDetailsComponent = (function () {
-    function AccountRegisterWizardCompanyDetailsComponent(_formBuilder, accountRegisterWizardStateService) {
+    function AccountRegisterWizardCompanyDetailsComponent(_formBuilder, AccountRegisterService, actionDispatcher) {
         this._formBuilder = _formBuilder;
-        this.accountRegisterWizardStateService = accountRegisterWizardStateService;
+        this.AccountRegisterService = AccountRegisterService;
+        this.actionDispatcher = actionDispatcher;
         this.validationMessages = {
             companyName: {
                 required: 'Please enter your company name.',
@@ -31,7 +32,6 @@ var AccountRegisterWizardCompanyDetailsComponent = (function () {
                 maxlength: 'company code length must be 8.'
             }
         };
-        this.actionDispatcher = new actions_1.registerActions();
     }
     AccountRegisterWizardCompanyDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -50,11 +50,11 @@ var AccountRegisterWizardCompanyDetailsComponent = (function () {
         this.websiteFormControl = this.companyDetailsForm.get('website');
         this.companyNameFormControl.valueChanges.subscribe(function (value) {
             _this.setValidationForCompanyName(_this.companyNameFormControl);
-            _this.accountRegisterWizardStateService.setCompanyDetailsStepState(_this.companyNameFormControl.valid && _this.companyCodeFormControl.valid);
+            _this.AccountRegisterService.setCompanyDetailsStepState(_this.companyNameFormControl.valid && _this.companyCodeFormControl.valid);
         });
         this.companyCodeFormControl.valueChanges.subscribe(function (value) {
             _this.setValidationForCompanyCode(_this.companyCodeFormControl);
-            _this.accountRegisterWizardStateService.setCompanyDetailsStepState(_this.companyNameFormControl.valid && _this.companyCodeFormControl.valid);
+            _this.AccountRegisterService.setCompanyDetailsStepState(_this.companyNameFormControl.valid && _this.companyCodeFormControl.valid);
         });
     };
     AccountRegisterWizardCompanyDetailsComponent.prototype.ngOnChanges = function (changes) {
@@ -87,7 +87,8 @@ AccountRegisterWizardCompanyDetailsComponent = __decorate([
         styleUrls: ['../_styles/account.register.wizard.companyDetails.component.css']
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder,
-        account_register_wizard_state_service_1.AccountRegisterWizardStateService])
+        account_register_wizard_state_service_1.AccountRegisterService,
+        actions_1.registerActions])
 ], AccountRegisterWizardCompanyDetailsComponent);
 exports.AccountRegisterWizardCompanyDetailsComponent = AccountRegisterWizardCompanyDetailsComponent;
 //# sourceMappingURL=account.register.wizard.companyDetails.component.js.map

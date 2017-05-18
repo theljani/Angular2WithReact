@@ -1,5 +1,5 @@
 export class WizardState {
-    isUserDetailsSetpValid: boolean;
-    isCompanyDetailsStepValid: boolean;
+    isCompanyInfoStepValid: boolean;
+    isCompanyAddressStepValid: boolean;
     isAccountDetailsStepValid: boolean;
 }

@@ -17,18 +17,10 @@ var store_1 = require("../_store/store");
 var actions_1 = require("../_store/actions");
 // registerStore
 var AccountRegisterWizardUserDetailsComponent = (function () {
-    function AccountRegisterWizardUserDetailsComponent(_formBuilder, accountRegisterWizardStateService) {
+    function AccountRegisterWizardUserDetailsComponent(_formBuilder, AccountRegisterService, actionDispatcher) {
         this._formBuilder = _formBuilder;
-        this.accountRegisterWizardStateService = accountRegisterWizardStateService;
-        this.registerEntity = {
-            userDetails: {
-                fullName: null,
-                phoneNumber: null,
-                address: null
-            },
-            accountDetails: null,
-            companyDetails: null
-        };
+        this.AccountRegisterService = AccountRegisterService;
+        this.actionDispatcher = actionDispatcher;
         this.fullNameErrorMessage = '';
         this.phoneNumberErrorMessage = '';
         this.validationMessages = {
@@ -40,7 +32,6 @@ var AccountRegisterWizardUserDetailsComponent = (function () {
                 required: 'Please enter your phone number'
             }
         };
-        this.actionDispatcher = new actions_1.registerActions();
     }
     AccountRegisterWizardUserDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -63,11 +54,11 @@ var AccountRegisterWizardUserDetailsComponent = (function () {
         this.countryControl = this.userDetailsForm.get('country');
         this.fullNameControl.valueChanges.subscribe(function (value) {
             _this.setValidationForFullname(_this.fullNameControl);
-            _this.accountRegisterWizardStateService.setUserDetailsStepSatate(_this.fullNameControl.valid && _this.phoneNumberControl.valid);
+            _this.AccountRegisterService.setUserDetailsStepSatate(_this.fullNameControl.valid && _this.phoneNumberControl.valid);
         });
         this.phoneNumberControl.valueChanges.subscribe(function (value) {
             _this.setValidationForPhoneNumber(_this.phoneNumberControl);
-            _this.accountRegisterWizardStateService.setUserDetailsStepSatate(_this.fullNameControl.valid && _this.phoneNumberControl.valid);
+            _this.AccountRegisterService.setUserDetailsStepSatate(_this.fullNameControl.valid && _this.phoneNumberControl.valid);
         });
     };
     AccountRegisterWizardUserDetailsComponent.prototype.ngOnChanges = function (changes) {
@@ -100,7 +91,8 @@ AccountRegisterWizardUserDetailsComponent = __decorate([
         styleUrls: ['../_styles/account.register.wizard.userDetails.component.css']
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder,
-        account_register_wizard_state_service_1.AccountRegisterWizardStateService])
+        account_register_wizard_state_service_1.AccountRegisterService,
+        actions_1.registerActions])
 ], AccountRegisterWizardUserDetailsComponent);
 exports.AccountRegisterWizardUserDetailsComponent = AccountRegisterWizardUserDetailsComponent;
 //# sourceMappingURL=account.register.wizard.userDetails.component.js.map

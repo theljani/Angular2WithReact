@@ -1,9 +1,9 @@
 <div class="register_wizard_companyDetails">
-    <form [formGroup]="companyDetailsForm">
+    <form [formGroup]="companyInfoForm">
         <div class="form-group"
         [ngClass]="{'has-error': companyNameErrorMessage}">
             <input type="text"
-                [(ngModel)]="companyDetails.name"
+                [(ngModel)]="companyInfo.name"
                 (ngModelChange)="ngOnChanges($event)"
                 formControlName="name"
                 class="form-control" placeholder="Company name" />
@@ -16,7 +16,7 @@
         <div class="form-group"
             [ngClass]="{'has-error': companyCodeErrorMessage }">
             <input type="text"
-                [(ngModel)]="companyDetails.companyCode"
+                [(ngModel)]="companyInfo.companyCode"
                 (ngModelChange)="ngOnChanges($event)"
                 formControlName="companyCode"
                 class="form-control" placeholder="Company code" />
@@ -26,17 +26,22 @@
                 </span>
         </div>
 
-        <div class="form-group">
+        <div class="form-group"
+            [ngClass]="{'has-error': companyPhoneNumberError }">
             <input type="text"
-                [(ngModel)]="companyDetails.position"
+                [(ngModel)]="companyInfo.phoneNumber"
                 (ngModelChange)="ngOnChanges($event)"
-                formControlName="position"
-                class="form-control" placeholder="Position" />
+                formControlName="phoneNumber"
+                class="form-control" placeholder="PhoneNumber" />
+
+                <span class="help-block" *ngIf="companyPhoneNumberError">
+                    {{companyPhoneNumberError}}
+                </span>
         </div>
 
         <div class="form-group">
             <input type="text"
-                [(ngModel)]="companyDetails.website"
+                [(ngModel)]="companyInfo.website"
                 (ngModelChange)="ngOnChanges($event)"
                 formControlName="website"
                 class="form-control" placeholder="Web site url" />

@@ -3,25 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var actions_1 = require("./actions");
 var initialState = {
     registerEntity: {
-        userDetails: {
-            fullName: '',
-            phoneNumber: '',
-            address: {
-                addressLine: '',
-                city: '',
-                country: '',
-                zipCode: ''
-            }
-        },
-        companyDetails: {
+        companyInfo: {
             name: '',
             companyCode: '',
-            position: '',
-            website: ''
+            phoneNumber: '',
+            webSite: ''
+        },
+        companyAddress: {
+            addressLine: '',
+            city: '',
+            postalCode: '',
+            country: ''
         },
         accountDetails: {
             login: '',
-            companyCode: '',
             password: '',
             confirmPassword: ''
         }
@@ -30,11 +25,17 @@ var initialState = {
 function registerReducer(state, action) {
     switch (action.type) {
         case actions_1.USER_DETAILS_FORM_UPDATED:
-            return { "registerEntity": action.payload };
+            return Object.assign({}, state, {
+                registerEntity: action.payload
+            });
         case actions_1.COMPANY_DETAILS_FORM_UPDATED:
-            return { "registerEntity": action.payload };
+            return Object.assign({}, state, {
+                registerEntity: action.payload
+            });
         case actions_1.ACCOUNT_DETAILS_FORM_UPDATED:
-            return { "registerEntity": action.payload };
+            return Object.assign({}, state, {
+                registerEntity: action.payload
+            });
         default:
             return state ? state : initialState;
     }

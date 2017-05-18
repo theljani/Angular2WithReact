@@ -17,25 +17,27 @@ var wizard_stepper_component_1 = require("../../common/wizard-stepper/wizard.ste
 // Services
 var account_register_wizard_state_service_1 = require("./_services/account.register.wizard.state.service");
 var AccountRegisterComponent = (function () {
-    function AccountRegisterComponent(_router, accountRegisterWizardStateService) {
+    function AccountRegisterComponent(_router, actionsDispatcher, registerWizardState) {
         this._router = _router;
+        this.actionsDispatcher = actionsDispatcher;
+        this.registerWizardState = registerWizardState;
         this.activeStep = null;
         this.steps = [
             {
                 "number": 1,
-                "title": "Personal details",
+                "title": "Company details",
                 "state": 'active',
                 "nextStep": 2,
                 "previousStep": null,
-                "contentRoute": "/account/register/userDetails"
+                "contentRoute": "/account/register/companyInfo"
             },
             {
                 "number": 2,
-                "title": "Company details",
+                "title": "Company address",
                 "state": null,
                 "nextStep": 3,
                 "previousStep": 1,
-                "contentRoute": "/account/register/companyDetails"
+                "contentRoute": "/account/register/companyAddress"
             },
             {
                 "number": 3,
@@ -46,8 +48,6 @@ var AccountRegisterComponent = (function () {
                 "contentRoute": "/account/register/accountDetails"
             }
         ];
-        this.registerWizardState = accountRegisterWizardStateService;
-        this.actionDispatcher = new actions_1.registerActions();
     }
     AccountRegisterComponent.prototype.Next = function () {
         var nextStepNumber = this.activeStep.nextStep;
@@ -79,12 +79,13 @@ var AccountRegisterComponent = (function () {
     };
     AccountRegisterComponent.prototype.Confirm = function () {
         this.activeStep.state = 'done';
-        this.actionDispatcher.createAccount(this.registerEntity);
+        var state = this.updateFromState();
+        this.actionsDispatcher.createAccount(state);
     };
     AccountRegisterComponent.prototype.isFormValid = function () {
         if (this.activeStep.nextStep == null
-            && this.registerWizardState.wizardState.isUserDetailsSetpValid
-            && this.registerWizardState.wizardState.isCompanyDetailsStepValid
+            && this.registerWizardState.wizardState.isCompanyInfoStepValid
+            && this.registerWizardState.wizardState.isCompanyAddressStepValid
             && this.registerWizardState.wizardState.isAccountDetailsStepValid) {
             return true;
         }
@@ -94,15 +95,15 @@ var AccountRegisterComponent = (function () {
         var wizardStateService = this.registerWizardState;
         var state = false;
         if (this.activeStep == null) {
-            state = wizardStateService.wizardState.isUserDetailsSetpValid;
+            state = wizardStateService.wizardState.isCompanyInfoStepValid;
         }
         else {
             switch (this.activeStep.number.toString()) {
                 case "1":
-                    state = wizardStateService.wizardState.isUserDetailsSetpValid;
+                    state = wizardStateService.wizardState.isCompanyInfoStepValid;
                     break;
                 case "2":
-                    state = wizardStateService.wizardState.isCompanyDetailsStepValid;
+                    state = wizardStateService.wizardState.isCompanyAddressStepValid;
                     break;
                 case "3":
                     state = wizardStateService.wizardState.isAccountDetailsStepValid;
@@ -114,14 +115,14 @@ var AccountRegisterComponent = (function () {
     AccountRegisterComponent.prototype.updateFromState = function () {
         var registerFormState = store_1.registerStore.getState();
         this.registerEntity = registerFormState.registerEntity;
+        return registerFormState;
     };
     AccountRegisterComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.activeStep = this.steps[0];
-        this.updateFromState();
-        store_1.registerStore.subscribe(function () {
-            _this.updateFromState();
-        });
+        // this.updateFromState();
+        // registerStore.subscribe(() => {
+        //     this.updateFromState();
+        // });
         this._router.navigate([this.activeStep.contentRoute]);
     };
     return AccountRegisterComponent;
@@ -136,7 +137,9 @@ AccountRegisterComponent = __decorate([
         templateUrl: '_templates/account.register.component.html',
         styleUrls: ['_styles/account.register.component.css']
     }),
-    __metadata("design:paramtypes", [router_1.Router, account_register_wizard_state_service_1.AccountRegisterWizardStateService])
+    __metadata("design:paramtypes", [router_1.Router,
+        actions_1.registerActions,
+        account_register_wizard_state_service_1.AccountRegisterService])
 ], AccountRegisterComponent);
 exports.AccountRegisterComponent = AccountRegisterComponent;
 //# sourceMappingURL=account.register.component.js.map
