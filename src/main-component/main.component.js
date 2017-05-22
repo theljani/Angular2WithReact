@@ -40,7 +40,7 @@ MainComponent = __decorate([
         selector: 'pt-main',
         moduleId: module.id,
         templateUrl: '_templates/main.component.html',
-        styleUrls: ['_styles/main.component.css']
+        styleUrls: ['_styles/main.component.scss']
     })
 ], MainComponent);
 exports.MainComponent = MainComponent;

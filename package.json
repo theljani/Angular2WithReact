@@ -4,7 +4,8 @@
   "description": "",
   "main": "\u001b[A\u001b[Bmain.ts",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "start": "tsc && concurrently \"tsc -w\" \"build:sass\" \"lite-server\" ",
+    "build:sass": "node-sass sass_folder/ -o css_folder",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lint": "tslint ./app/**/*.ts -t verbose",
@@ -15,8 +16,13 @@
   "author": "thaljani ahmed",
   "license": "ISC",
   "devDependencies": {
+    "bootstrap-css": "^4.0.0-alpha.5",
+    "bootstrap-sass": "^3.3.7",
     "concurrently": "^3.4.0",
     "lite-server": "^2.3.0",
+    "node-sass": "^4.5.3",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.5",
     "tslint": "^5.0.0",
     "typescript": "^2.2.2",
     "typings": "^2.1.0"

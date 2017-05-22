@@ -12,7 +12,7 @@ import {signinStore} from './_store/store';
     selector: '',
     moduleId:module.id,
     templateUrl: '_templates/account.signin.component.html',
-    styleUrls: ['_styles/account.signin.component.css']
+    styleUrls: ['_styles/account.signin.component.scss']
 })
 export class AccountSigninComponent implements OnInit {
     login: string;

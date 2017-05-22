@@ -133,7 +133,7 @@ AccountRegisterWizardAccountDetailsComponent = __decorate([
         selector: 'pt-register-wizard-account-details',
         moduleId: module.id,
         templateUrl: '../_templates/account.register.wizard.accountDetails.component.html',
-        styleUrls: ['../_styles/account.register.wizard.accountDetails.component.css']
+        styleUrls: ['../_styles/account.register.wizard.accountDetails.component.scss']
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder,
         account_register_wizard_state_service_1.AccountRegisterService,

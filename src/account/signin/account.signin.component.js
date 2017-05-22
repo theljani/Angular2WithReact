@@ -91,7 +91,7 @@ AccountSigninComponent = __decorate([
         selector: '',
         moduleId: module.id,
         templateUrl: '_templates/account.signin.component.html',
-        styleUrls: ['_styles/account.signin.component.css']
+        styleUrls: ['_styles/account.signin.component.scss']
     }),
     __metadata("design:paramtypes", [account_signin_service_1.AccountSigninService,
         forms_1.FormBuilder,

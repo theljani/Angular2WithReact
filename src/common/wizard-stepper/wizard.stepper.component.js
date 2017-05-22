@@ -48,7 +48,7 @@ WizardStepperComponent = __decorate([
         selector: 'wizard-stepper',
         moduleId: module.id,
         templateUrl: '_templates/wizard.stepper.component.html',
-        styleUrls: ['_styles//wizard.stepper.component.css']
+        styleUrls: ['_styles//wizard.stepper.component.scss']
     })
 ], WizardStepperComponent);
 exports.WizardStepperComponent = WizardStepperComponent;

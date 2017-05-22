@@ -15,7 +15,7 @@ import {AccountRegisterService} from './_services/account.register.wizard.state.
 @Component({
     moduleId:module.id,
     templateUrl: '_templates/account.register.component.html',
-    styleUrls: ['_styles/account.register.component.css'] 
+    styleUrls: ['_styles/account.register.component.scss'] 
 })
 export class AccountRegisterComponent implements OnInit {
 

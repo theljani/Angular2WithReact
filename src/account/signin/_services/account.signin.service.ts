@@ -8,14 +8,14 @@ import {ISigninEntity} from '../_entities/signinEntity';
 
 @Injectable()
 export class AccountSigninService {
-    private _signInUrl = 'http://localhost:2734/api/account/signin';
+    private _signInUrl = 'http://localhost:2734/api/account/company/signin';
 
     constructor(private _http: Http) {
 
     }
 
     signIn(signinModel: ISigninEntity) :  Observable<any> {
-        return this._http.get(this._signInUrl);
+        return this._http.post(this._signInUrl, signinModel);
         //.catch(this.handleError);
     }
 

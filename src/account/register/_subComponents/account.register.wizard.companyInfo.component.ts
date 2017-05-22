@@ -14,7 +14,7 @@ import {CompanyInfo} from '../_entities/companyInfo';
     selector: 'pt-register-wizard-company-details',
     moduleId: module.id,
     templateUrl: '../_templates/account.register.wizard.companyInfo.component.html',
-    styleUrls: ['../_styles/account.register.wizard.companyInfo.component.css']
+    styleUrls: ['../_styles/account.register.wizard.companyInfo.component.scss']
 })
 export class AccountRegisterWizardCompanyInfoComponent implements OnInit, OnChanges {
     companyInfoForm: FormGroup;

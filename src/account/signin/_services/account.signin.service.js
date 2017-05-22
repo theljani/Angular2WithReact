@@ -17,10 +17,10 @@ require("rxjs/add/operator/catch");
 var AccountSigninService = (function () {
     function AccountSigninService(_http) {
         this._http = _http;
-        this._signInUrl = 'http://localhost:2734/api/account/signin';
+        this._signInUrl = 'http://localhost:2734/api/account/company/signin';
     }
     AccountSigninService.prototype.signIn = function (signinModel) {
-        return this._http.get(this._signInUrl);
+        return this._http.post(this._signInUrl, signinModel);
         //.catch(this.handleError);
     };
     AccountSigninService.prototype.handleError = function (error) {

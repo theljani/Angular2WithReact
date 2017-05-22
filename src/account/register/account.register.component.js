@@ -135,7 +135,7 @@ AccountRegisterComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         templateUrl: '_templates/account.register.component.html',
-        styleUrls: ['_styles/account.register.component.css']
+        styleUrls: ['_styles/account.register.component.scss']
     }),
     __metadata("design:paramtypes", [router_1.Router,
         actions_1.registerActions,

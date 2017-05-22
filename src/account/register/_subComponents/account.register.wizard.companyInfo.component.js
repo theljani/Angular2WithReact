@@ -99,7 +99,7 @@ AccountRegisterWizardCompanyInfoComponent = __decorate([
         selector: 'pt-register-wizard-company-details',
         moduleId: module.id,
         templateUrl: '../_templates/account.register.wizard.companyInfo.component.html',
-        styleUrls: ['../_styles/account.register.wizard.companyInfo.component.css']
+        styleUrls: ['../_styles/account.register.wizard.companyInfo.component.scss']
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder,
         account_register_wizard_state_service_1.AccountRegisterService,

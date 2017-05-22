@@ -117,7 +117,7 @@ AccountRegisterWizardCompanyAddressComponent = __decorate([
         selector: 'pt-register-wizard-user-details',
         moduleId: module.id,
         templateUrl: '../_templates/account.register.wizard.companyAddress.component.html',
-        styleUrls: ['../_styles/account.register.wizard.companyAddress.component.css']
+        styleUrls: ['../_styles/account.register.wizard.companyAddress.component.scss']
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder,
         account_register_wizard_state_service_1.AccountRegisterService,

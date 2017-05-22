@@ -31,7 +31,7 @@ function PasswordsMatcher(control: AbstractControl): {[key: string] : boolean } 
     selector: 'pt-register-wizard-account-details',
     moduleId: module.id,
     templateUrl: '../_templates/account.register.wizard.accountDetails.component.html',
-    styleUrls: ['../_styles/account.register.wizard.accountDetails.component.css']
+    styleUrls: ['../_styles/account.register.wizard.accountDetails.component.scss']
 })
 export class AccountRegisterWizardAccountDetailsComponent implements OnInit, OnChanges {
     accountDetailsForm: FormGroup;
