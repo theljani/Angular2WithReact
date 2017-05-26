@@ -5,7 +5,7 @@ import {IRouteEntity} from './_entities/routeEntity';
     selector: 'pt-main',
     moduleId:module.id,
     templateUrl: '_templates/main.component.html' ,
-    styleUrls: ['_styles/main.component.scss']
+    styleUrls: ['_styles/main.component.css']
 })
 export class MainComponent implements OnInit {
     companyName: string = 'TRANSPARENCY-ONE';

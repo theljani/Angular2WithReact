@@ -6,7 +6,7 @@ import {Step} from './_entities/step';
     selector: 'wizard-stepper',
     moduleId: module.id,
     templateUrl: '_templates/wizard.stepper.component.html',
-    styleUrls: ['_styles//wizard.stepper.component.scss']
+    styleUrls: ['_styles/wizard.stepper.component.css']
 })
 export class WizardStepperComponent  implements OnInit {
 

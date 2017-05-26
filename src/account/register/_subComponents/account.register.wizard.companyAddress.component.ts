@@ -13,7 +13,7 @@ import {CompanyAddress} from '../_entities/companyAddress';
     selector: 'pt-register-wizard-user-details',
     moduleId: module.id,
     templateUrl: '../_templates/account.register.wizard.companyAddress.component.html',
-    styleUrls: ['../_styles/account.register.wizard.companyAddress.component.scss']
+    styleUrls: ['../_styles/account.register.wizard.companyAddress.component.css']
 })
 export class AccountRegisterWizardCompanyAddressComponent implements OnInit, OnChanges {
     companyAddressForm: FormGroup;
