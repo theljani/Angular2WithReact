@@ -41,9 +41,6 @@ import {signinActions} from './signin/_store/actions';
             },
             {
                 path:'', component: AccountSigninComponent
-            },
-            {
-                path: '**', redirectTo:'', pathMatch: 'full'
             }
         ])
     ],

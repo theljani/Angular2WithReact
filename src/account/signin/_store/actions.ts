@@ -13,22 +13,30 @@ export class signinActions {
 
     constructor(private _signinService: AccountSigninService){}
 
-    signin(state: ISigninState) : void {
+    signin(state: ISigninState) : boolean {
+        let signinResult;
+
         this._signinService.signIn(state.signinEntity)
             .map(result => result.json())
             .subscribe(data => {
+                            signinResult = true;
                             signinStore.dispatch({
                                 type: SIGNIN_SUCCESS,
                                 payload: Object.assign({}, data)
                             });
+
                         },
                         error => {
+                            signinResult = false;
                             signinStore.dispatch({
                                 type: SIGNIN_FAILURE,
                                 payload: Object.assign({}, error.json())
                             });
+                            
                         }
             );
+
+            return signinResult;
     }
 }
 

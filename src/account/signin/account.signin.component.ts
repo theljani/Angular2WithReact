@@ -65,7 +65,7 @@ export class AccountSigninComponent implements OnInit {
             this.signInResponse = signinStore.getState();
 
             if(this.signInResponse.ok) {
-                this._router.navigate(['/account/register']);
+                this._router.navigate(['/company/:companyId/dashboard', {companyId: "1"}]);
             }else {
                 this.backendError = this.signInResponse.signinEntity.error;
             }
@@ -99,7 +99,6 @@ export class AccountSigninComponent implements OnInit {
         };
         
         this.backendError = '';
-
-        this._signinAction.signin(signinModel);
+        var result = this._signinAction.signin(signinModel);
     }
 }
