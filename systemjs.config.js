@@ -23,7 +23,7 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       'redux': 'npm:redux/dist/redux.js',
-
+      'ng2-cookies': 'npm:ng2-cookies',
       // other libraries
       'rxjs': 'npm:rxjs'
     },
@@ -34,6 +34,10 @@
         defaultExtension: 'js'
       },
       rxjs: {
+        defaultExtension: 'js'
+      },
+      'ng2-cookies': {
+        main: './index.js',
         defaultExtension: 'js'
       }
     }

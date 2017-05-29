@@ -4,11 +4,11 @@ import {IRouteEntity} from './_entities/routeEntity';
 @Component({
     selector: 'pt-main',
     moduleId:module.id,
-    templateUrl: '_templates/main.component.html' ,
+    templateUrl: '_templates/main.component.html',
     styleUrls: ['_styles/main.component.css']
 })
 export class MainComponent implements OnInit {
-    companyName: string = 'TRANSPARENCY-ONE';
+    companyName: string = 'MyLogo';
     filter: string = '';
     products: any[] = [
         {

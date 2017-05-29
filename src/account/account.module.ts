@@ -2,8 +2,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {HttpModule} from '@angular/http';
+import {CookieService} from 'ng2-cookies';
 
 // Import Components
 import {AccountSigninComponent} from './signin/account.signin.component';
@@ -19,6 +20,7 @@ import {AccountSigninService} from './signin/_services/account.signin.service';
 import {AccountRegisterService} from './register/_services/account.register.wizard.state.service';
 import {registerActions} from './register/_store/actions';
 import {signinActions} from './signin/_store/actions';
+import {CanActivateSigninGuard} from './signin/_guards/canActivateGuard';
 
 @NgModule({
     imports: [
@@ -28,7 +30,7 @@ import {signinActions} from './signin/_store/actions';
         HttpModule,
         RouterModule.forRoot([
             {
-                path:'account/signin', component: AccountSigninComponent
+                path:'account/signin', component: AccountSigninComponent, canActivate: [CanActivateSigninGuard]
             },
             {
                 path:'account/register', component: AccountRegisterComponent,
@@ -38,9 +40,6 @@ import {signinActions} from './signin/_store/actions';
                     { path: 'companyAddress',  component: AccountRegisterWizardCompanyAddressComponent},
                     { path: 'accountDetails',  component: AccountRegisterWizardAccountDetailsComponent}
                 ]
-            },
-            {
-                path:'', component: AccountSigninComponent
             }
         ])
     ],
@@ -52,9 +51,11 @@ import {signinActions} from './signin/_store/actions';
         AccountRegisterWizardAccountDetailsComponent,
         WizardStepperComponent
     ],
-    providers: [AccountSigninService, 
+    providers: [CanActivateSigninGuard,
+                AccountSigninService, 
                 AccountRegisterService, 
                 registerActions,
-                signinActions]
+                signinActions,
+                CookieService]
 })
 export class AccountModule {}

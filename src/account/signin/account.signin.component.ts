@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, AbstractControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import { CookieService } from 'ng2-cookies';
 
 import {AccountSigninService} from './_services/account.signin.service'
 import {ISigninEntity} from './_entities/signinEntity';
@@ -41,7 +42,8 @@ export class AccountSigninComponent implements OnInit {
     constructor(private _accountSigninService: AccountSigninService, 
         private _formBuilder: FormBuilder,
         private _signinAction: signinActions,
-        private _router: Router){}
+        private _router: Router,
+        private _cookiesService: CookieService){}
 
 
     ngOnInit(): void {
@@ -65,7 +67,9 @@ export class AccountSigninComponent implements OnInit {
             this.signInResponse = signinStore.getState();
 
             if(this.signInResponse.ok) {
-                this._router.navigate(['/company/:companyId/dashboard', {companyId: "1"}]);
+                this._cookiesService.set("Login", this.login, 15);       
+                this._cookiesService.set("Password", this.password, 15);
+                this._router.navigate(['/company', 1, "dashboard"]);
             }else {
                 this.backendError = this.signInResponse.signinEntity.error;
             }
@@ -91,14 +95,15 @@ export class AccountSigninComponent implements OnInit {
     }
 
     signIn(): void {
+        this.backendError = '';
+                
         let signinModel: ISigninState = {
             signinEntity: {
                 login: this.login,
                 password: this.password
             }
         };
-        
-        this.backendError = '';
+
         var result = this._signinAction.signin(signinModel);
     }
 }
