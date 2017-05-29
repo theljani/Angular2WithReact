@@ -21,6 +21,7 @@ import {AccountRegisterService} from './register/_services/account.register.wiza
 import {registerActions} from './register/_store/actions';
 import {signinActions} from './signin/_store/actions';
 import {CanActivateSigninGuard} from './signin/_guards/canActivateGuard';
+import {CanActivateRegisterGuard} from './register/_guards/canActivateGuard';
 
 @NgModule({
     imports: [
@@ -33,7 +34,7 @@ import {CanActivateSigninGuard} from './signin/_guards/canActivateGuard';
                 path:'account/signin', component: AccountSigninComponent, canActivate: [CanActivateSigninGuard]
             },
             {
-                path:'account/register', component: AccountRegisterComponent,
+                path:'account/register', component: AccountRegisterComponent, canActivate: [CanActivateRegisterGuard],
                 children: [
                     { path: '',  component: AccountRegisterWizardCompanyInfoComponent},
                     { path: 'companyInfo',  component: AccountRegisterWizardCompanyInfoComponent},
