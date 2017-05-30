@@ -70,7 +70,7 @@ export class AccountSigninComponent implements OnInit {
                 this._cookiesService.set("Login", this.login, 15);       
                 this._cookiesService.set("Password", this.password, 15);
                 this._router.navigate(['/company', 1, "dashboard"]);
-            }else {
+            } else {
                 this.backendError = this.signInResponse.signinEntity.error;
             }
         })
@@ -96,7 +96,7 @@ export class AccountSigninComponent implements OnInit {
 
     signIn(): void {
         this.backendError = '';
-                
+
         let signinModel: ISigninState = {
             signinEntity: {
                 login: this.login,

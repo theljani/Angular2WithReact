@@ -6,8 +6,12 @@ import { CommonModule } from '@angular/common';
 import {HttpModule} from '@angular/http';
 
 //
+import {CompnayDashboardRoutes} from './_routes/company.dashboard.routes';
 import {CompanyDashboardComponent} from './company-dashboard/company.dashboard.component';
 
+// Guards
+import {CompanyDashboardCanActivate} from "./company-dashboard/_guards/company.dashboard.canactivate";
+import {CompanyDashboardDataResolver} from './company-dashboard/_guards/company.dashboard.data.resolver';
 
 @NgModule({
     imports: [
@@ -15,13 +19,9 @@ import {CompanyDashboardComponent} from './company-dashboard/company.dashboard.c
         HttpModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forRoot([
-            {
-                path: 'company/:companyId/dashboard', component: CompanyDashboardComponent
-            }
-        ])
+        RouterModule.forRoot(CompnayDashboardRoutes)
     ],
     declarations: [CompanyDashboardComponent],
-    providers: []
+    providers: [CompanyDashboardCanActivate, CompanyDashboardDataResolver]
 })
 export class DashboardModule {}

@@ -53,6 +53,7 @@ import {CanActivateRegisterGuard} from './register/_guards/canActivateGuard';
         WizardStepperComponent
     ],
     providers: [CanActivateSigninGuard,
+                CanActivateRegisterGuard,
                 AccountSigninService, 
                 AccountRegisterService, 
                 registerActions,
