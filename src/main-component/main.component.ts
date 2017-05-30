@@ -8,7 +8,7 @@ import {IRouteEntity} from './_entities/routeEntity';
     styleUrls: ['_styles/main.component.css']
 })
 export class MainComponent implements OnInit {
-    companyName: string = 'MyLogo';
+    companyName: string = 'h-days';
     filter: string = '';
     products: any[] = [
         {

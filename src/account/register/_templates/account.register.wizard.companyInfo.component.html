@@ -6,7 +6,7 @@
                 [(ngModel)]="companyInfo.name"
                 (ngModelChange)="ngOnChanges($event)"
                 formControlName="name"
-                class="form-control" placeholder="Company name" />
+                class="form-control" placeholder="Name" />
 
                 <span class="help-block" *ngIf="companyNameErrorMessage">
                     {{companyNameErrorMessage}}
@@ -19,7 +19,7 @@
                 [(ngModel)]="companyInfo.companyCode"
                 (ngModelChange)="ngOnChanges($event)"
                 formControlName="companyCode"
-                class="form-control" placeholder="Company code" />
+                class="form-control" placeholder="Code" />
 
                 <span class="help-block" *ngIf="companyCodeErrorMessage">
                     {{companyCodeErrorMessage}}
@@ -32,7 +32,7 @@
                 [(ngModel)]="companyInfo.phoneNumber"
                 (ngModelChange)="ngOnChanges($event)"
                 formControlName="phoneNumber"
-                class="form-control" placeholder="PhoneNumber" />
+                class="form-control" placeholder="Phone number" />
 
                 <span class="help-block" *ngIf="companyPhoneNumberError">
                     {{companyPhoneNumberError}}

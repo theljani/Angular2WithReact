@@ -22,7 +22,7 @@
                         <input type="password" 
                             [(ngModel)] = "password" 
                             formControlName="password"
-                            class="form-control" placeholder="Mot de passe">
+                            class="form-control" placeholder="Password">
 
                             <span class="help-block" *ngIf="passwordErrorMessage">
                                 {{passwordErrorMessage}}
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="register_link">
-            <span>Vous n'avez pas de compte ? <b class="signin__registerInstruction"><a [routerLink]="['/account/register']">Inscrivez-vous !</a></b></span>           
+            <span>Don't you have an account yet? <b class="signin__registerInstruction"><a [routerLink]="['/account/register']">Register!</a></b></span>           
         </div>
     </div>
 </div>
