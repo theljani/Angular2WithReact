@@ -23,26 +23,16 @@ import {signinActions} from './signin/_store/actions';
 import {CanActivateSigninGuard} from './signin/_guards/canActivateGuard';
 import {CanActivateRegisterGuard} from './register/_guards/canActivateGuard';
 
+// routes
+import {AccountModuleRoutes} from './_routes/account.module.routes';
+
 @NgModule({
     imports: [
         CommonModule,  
         ReactiveFormsModule,     
         FormsModule,
         HttpModule,
-        RouterModule.forRoot([
-            {
-                path:'account/signin', component: AccountSigninComponent, canActivate: [CanActivateSigninGuard]
-            },
-            {
-                path:'account/register', component: AccountRegisterComponent, canActivate: [CanActivateRegisterGuard],
-                children: [
-                    { path: '',  component: AccountRegisterWizardCompanyInfoComponent},
-                    { path: 'companyInfo',  component: AccountRegisterWizardCompanyInfoComponent},
-                    { path: 'companyAddress',  component: AccountRegisterWizardCompanyAddressComponent},
-                    { path: 'accountDetails',  component: AccountRegisterWizardAccountDetailsComponent}
-                ]
-            }
-        ])
+        RouterModule.forRoot(AccountModuleRoutes)
     ],
     declarations: [
         AccountSigninComponent,
