@@ -1,8 +1,8 @@
 <div class="main_component">
-    <header class="fluid-container">
+    <!--<header class="fluid-container">
         <nav class="navbar bg-navbar">
             <div class="navigationBar__header">
-                {{companyName | uppercase}}
+                <a [routerLink]="['/']">{{companyName | uppercase}}</a>
             </div>
             <div class="navbar-header navigationBar__header__barButton">
                 <button data-toggle="collapse" data-target=".navigationBar__toggle" 
@@ -24,6 +24,7 @@
                 </ul>
             </div>
         </nav>
-    </header>
+    </header>-->
+    <hd-header [headerItems] = 'headerItems'></hd-header>
     <router-outlet></router-outlet>
 </div>

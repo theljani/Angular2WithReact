@@ -1,0 +1,61 @@
+.navigationBar__header {
+    padding-top: 2px;
+    margin: 14px 10px;
+    display: inline-block;
+    vertical-align: middle;
+
+    a {
+        font-family: 'Gotham SSm', sans-serif;
+        letter-spacing: 3px;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+    }
+}
+
+.navigationBar__header__barButton .navbar-toggle {
+    margin: 5px 15px;
+    padding: 0; 
+}
+
+.navigationBar__toggle {
+    float: right;
+    margin: 10px 0; 
+    
+    .navigationBar__toggle__navigation {
+        display: inline-block;
+        margin: 0;
+        padding: 5px; 
+    
+        .navigationBar__toggle__navigation__item {
+            a {
+                color: gray; 
+
+                &:link {
+                    text-decoration: none;
+                }
+
+                &:hover {
+                    text-decoration: none;
+                }
+
+                &:visited {
+                    text-decoration: none;
+                }
+
+                &:active {
+                    text-decoration: none;
+                }
+            }
+
+            .navigationBar__toggle__navigation__item__register {
+                a {
+                    color: white;
+                    padding: 5px 30px;
+                    border-radius: 0px; 
+                }
+            }
+        }
+    }
+}

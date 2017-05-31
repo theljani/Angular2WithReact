@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {IRouteEntity} from './_entities/routeEntity';
+
+import {HeaderComponent} from '../common/header/header.component';
 
 @Component({
     selector: 'pt-main',
@@ -8,7 +10,7 @@ import {IRouteEntity} from './_entities/routeEntity';
     styleUrls: ['_styles/main.component.css']
 })
 export class MainComponent implements OnInit {
-    companyName: string = 'h-days';
+    @ViewChild(HeaderComponent) headerComponent: HeaderComponent;    
     filter: string = '';
     products: any[] = [
         {
@@ -18,6 +20,17 @@ export class MainComponent implements OnInit {
             "name":"product 2"
         }
     ];
+
+    headerItems: any[] = [
+        {
+            "label": "Sign In",
+            "route": "/account/signin"
+        },
+        {
+            "label": "Register",
+            "route": "/account/register"
+        }
+    ]
 
     routes: IRouteEntity[] = [
         {

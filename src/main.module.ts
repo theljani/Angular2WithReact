@@ -7,6 +7,7 @@ import {MainComponent} from './main-component/main.component';
 import {ProductsFilterPipe} from './main-component/_pipes/products.filter.pipe';
 import {AccountModule} from './account/account.module';
 import {DashboardModule} from './dashboard/dashboard.module';
+import {HeaderComponent} from './common/header/header.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import {DashboardModule} from './dashboard/dashboard.module';
     DashboardModule
   ],
   declarations: [
+    HeaderComponent,
     MainComponent,
     HomeComponent,
     ProductsFilterPipe
