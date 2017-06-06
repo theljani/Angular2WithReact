@@ -4,6 +4,7 @@ import {signinStore} from './store';
 import {Observable} from 'rxjs/Observable';
 
 import {AccountSigninService} from '../_services/account.signin.service';
+import {headerStore} from '../../../common/header/_store/store';
 
 export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
 export const SIGNIN_FAILURE = 'SIGNIN_FAILURE';
@@ -15,15 +16,25 @@ export class signinActions {
 
     signin(state: ISigninState) : boolean {
         let signinResult;
-
         this._signinService.signIn(state.signinEntity)
             .map(result => result.json())
             .subscribe(data => {
                             signinResult = true;
+                            headerStore.dispatch({
+                                type: SIGNIN_SUCCESS,
+                                payload: [
+                                        {
+                                            "label": "Profile",
+                                            "route": "/account/signin"
+                                        }
+                                    ]
+                            });
+
                             signinStore.dispatch({
                                 type: SIGNIN_SUCCESS,
                                 payload: Object.assign({}, data)
                             });
+
 
                         },
                         error => {

@@ -2,6 +2,8 @@ import {Component, ViewChild, OnInit} from '@angular/core';
 import {IRouteEntity} from './_entities/routeEntity';
 
 import {HeaderComponent} from '../common/header/header.component';
+import {headerActions} from '../common/header/_store/actions';
+import {headerState} from '../common/header/_store/headerState';
 
 @Component({
     selector: 'pt-main',
@@ -12,14 +14,8 @@ import {HeaderComponent} from '../common/header/header.component';
 export class MainComponent implements OnInit {
     @ViewChild(HeaderComponent) headerComponent: HeaderComponent;    
     filter: string = '';
-    products: any[] = [
-        {
-            "name": "product 1",
-        },
-        {
-            "name":"product 2"
-        }
-    ];
+
+    constructor(private headerActionsDispatcher: headerActions) {}
 
     headerItems: any[] = [
         {

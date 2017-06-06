@@ -8,6 +8,7 @@ import {ProductsFilterPipe} from './main-component/_pipes/products.filter.pipe';
 import {AccountModule} from './account/account.module';
 import {DashboardModule} from './dashboard/dashboard.module';
 import {HeaderComponent} from './common/header/header.component';
+import {headerActions} from './common/header/_store/actions';
 
 @NgModule({
   imports: [
@@ -28,6 +29,9 @@ import {HeaderComponent} from './common/header/header.component';
     MainComponent,
     HomeComponent,
     ProductsFilterPipe
+  ],
+  providers: [
+    headerActions
   ],
   bootstrap: [MainComponent]
 })
