@@ -1,4 +1,25 @@
-<h1>
-    {{companyName}}: Company Dashboard!!
-    
-</h1>
+<div class="company_dashboard">
+    <div class="company_dashboard_sidebar">
+        <div class="company_dashboard_sidebar_content" [ngStyle]="{'width': getSidebarWidth()+'px'}">
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+        <button *ngIf="sideBarToggled" class="company_dashboard_sidebar_openclose_button"
+            [ngClass]="{'sidebar_toggled': sideBarToggled }"
+            (click)="toggleSideBar()">
+            &times;
+        </button>
+
+        <button *ngIf="!sideBarToggled" class="company_dashboard_sidebar_openclose_button" 
+            [ngClass]="{'sidebar_collapsed': !sideBarToggled }"
+            (click)="toggleSideBar()">
+            &#9776;
+        </button>
+        <!--<span class="company_dashboard_sidebar_open" style="font-size:30px;cursor:pointer">&#9776;</span>-->
+    </div>
+
+    <div class="company_dashboard_content"></div>
+    <!--<button style="margin-lef: 300px" (click)="toggleSideBar()"> &#9776;</button>-->
+</div>

@@ -10,9 +10,9 @@
         </div>
 
         <div class="register_wizard-actions .btn-toolbar">
-          <button class="btn btn_confirm pull-right" [disabled]="!isFormValid()"  (click)="Confirm()">Confirm</button>
-          <button class="btn pull-right" [disabled]="!isCurrentStepValid() || activeStep.nextStep == null" (click)="Next()">Next</button>        
-          <button class="btn pull-right" [disabled]="activeStep.previousStep == null" (click)="Previous()">Previous</button>
+          <button class="btn btn_confirm pull-right" *ngIf="activeStep.nextStep == null" [disabled]="!isFormValid()"  (click)="Confirm()">Confirm</button>
+          <button class="btn pull-right" *ngIf="activeStep.nextStep" [disabled]="!isCurrentStepValid() || activeStep.nextStep == null" (click)="Next()">Next</button>        
+          <button class="btn pull-right" *ngIf="activeStep.previousStep" [disabled]="activeStep.previousStep == null" (click)="Previous()">Previous</button>
         </div>
     </div>
     <div class="signin_link">

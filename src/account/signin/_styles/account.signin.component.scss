@@ -60,3 +60,15 @@
     border: 1px solid red;
     color: red;
 }
+
+
+@media (max-width: 770px) {
+  .signin .signin__form .signin__form__connectButton {
+    padding: 0;
+
+    button {
+      float: none;
+      width: 100%;
+    }
+  }
+}
