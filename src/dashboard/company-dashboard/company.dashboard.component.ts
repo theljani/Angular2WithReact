@@ -26,6 +26,6 @@ export class CompanyDashboardComponent implements OnInit {
         if(this.sideBarToggled) 
             return 300;
         
-        return 40;
+        return 50;
     }
 }
