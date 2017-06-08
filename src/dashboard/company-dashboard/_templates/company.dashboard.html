@@ -11,6 +11,10 @@
             (click)="toggleSideBar()">
             {{sideBarToggled ? '&times;' : '&#9776;'}}
         </button>
+
+        <div class="company_dashboard_sidebar_logout" [ngStyle]="{'width': getSidebarWidth()+'px'}">
+            <span>Logout</span>
+        </div>
     </div>
 
     <div class="company_dashboard_content"></div>
