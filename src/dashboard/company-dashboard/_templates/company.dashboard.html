@@ -1,20 +1,24 @@
 <div class="company_dashboard">
     <div class="company_dashboard_sidebar">
+        <div class="company_dashboard_sidebar_openclose" [ngStyle]="{'width': getSidebarWidth()+'px'}">
+            <button class="company_dashboard_sidebar_openclose_button"
+                [ngClass]="{'sidebar_toggled': sideBarToggled, 'sidebar_collapsed': !sideBarToggled }"
+                (click)="toggleSideBar()">
+                    &#9776;
+                <!--{{sideBarToggled ? '&times;' : '&#9776;'}}-->
+            </button>
+        </div>
+
         <div class="company_dashboard_sidebar_content" [ngStyle]="{'width': getSidebarWidth()+'px'}">
             <a *ngIf="sideBarToggled" href="#">About</a>
             <a *ngIf="sideBarToggled" href="#">Services</a>
             <a *ngIf="sideBarToggled" href="#">Clients</a>
             <a *ngIf="sideBarToggled" href="#">Contact</a>
         </div>
-        <button class="company_dashboard_sidebar_openclose_button"
-            [ngClass]="{'sidebar_toggled': sideBarToggled, 'sidebar_collapsed': !sideBarToggled }"
-            (click)="toggleSideBar()">
-            {{sideBarToggled ? '&times;' : '&#9776;'}}
-        </button>
-
+        <!--
         <div class="company_dashboard_sidebar_logout" [ngStyle]="{'width': getSidebarWidth()+'px'}">
             <span>Logout</span>
-        </div>
+        </div>-->
     </div>
 
     <div class="company_dashboard_content"></div>

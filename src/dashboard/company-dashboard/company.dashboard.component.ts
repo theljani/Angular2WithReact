@@ -10,9 +10,7 @@ export class CompanyDashboardComponent implements OnInit {
     companyName: string;
     sideBarToggled: boolean;
 
-    constructor(private _route: ActivatedRoute){
-
-    }
+    constructor(private _route: ActivatedRoute){}
 
     ngOnInit(): void {
         this.companyName = this._route.snapshot.data['companyData'].companyName;
