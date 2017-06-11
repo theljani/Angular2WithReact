@@ -23,5 +23,8 @@ export const AccountModuleRoutes: Routes = [
             { path: 'companyAddress',  component: AccountRegisterWizardCompanyAddressComponent},
             { path: 'accountDetails',  component: AccountRegisterWizardAccountDetailsComponent}
         ]
-    }
+    },
+    {
+        path:'', component: AccountSigninComponent, canActivate: [CanActivateSigninGuard]
+    },
 ];

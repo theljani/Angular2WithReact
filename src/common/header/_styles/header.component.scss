@@ -14,6 +14,28 @@
     }
 }
 
+.bg-navbar {
+    background-color: #222 !important;
+    height: 60px;
+    border-radius: 0;
+    margin-left: 60px;
+    border-left: 1px solid #181818;
+}
+
+.navigationBar__header_search {
+    float: left;
+    width: 400px;
+    padding-top: 12px;
+    padding-left: 20px;
+
+    input {
+        border-radius: 2px;
+        height: 35px;
+        background-color: #363636;
+        border: none;
+        color: white; 
+    }
+}
 .navigationBar__header__barButton .navbar-toggle {
     margin: 5px 15px;
     padding: 0; 

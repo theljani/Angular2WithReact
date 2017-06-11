@@ -1,12 +1,15 @@
 <div class="company_dashboard">
     <div class="company_dashboard_sidebar">
         <div class="company_dashboard_sidebar_openclose" [ngStyle]="{'width': getSidebarWidth()+'px'}">
-            <button class="company_dashboard_sidebar_openclose_button"
+            <span class="company_dashboard_sidebar_openclose_button"
                 [ngClass]="{'sidebar_toggled': sideBarToggled, 'sidebar_collapsed': !sideBarToggled }"
                 (click)="toggleSideBar()">
                     &#9776;
-                <!--{{sideBarToggled ? '&times;' : '&#9776;'}}-->
-            </button>
+            </span>
+            <div class="company_dashboard_sidebar_companyName"
+            *ngIf='sideBarToggled'>
+                {{companyName}}
+            </div>
         </div>
 
         <div class="company_dashboard_sidebar_content" [ngStyle]="{'width': getSidebarWidth()+'px'}">
@@ -15,11 +18,34 @@
             <a *ngIf="sideBarToggled" href="#">Clients</a>
             <a *ngIf="sideBarToggled" href="#">Contact</a>
         </div>
-        <!--
-        <div class="company_dashboard_sidebar_logout" [ngStyle]="{'width': getSidebarWidth()+'px'}">
-            <span>Logout</span>
-        </div>-->
     </div>
 
-    <div class="company_dashboard_content"></div>
+    <div class="company_dashboard_content" [ngStyle]="{'margin-left': sideBarToggled ? '160px' : '0px'}">
+        <div class="company_dashboard_content_header">
+            <hd-header></hd-header>
+        </div>
+        <div class="company_dashboard_content_content">
+            <h1>Content</h1>
+        </div>
+    </div>
 </div>
+<!--
+<div class="company_dashboard">
+    <div class="company_dashboard_aside" [ngStyle]="{'width': getSidebarWidth()+'px'}">
+        <div class="company_dashboard_aside_header">
+            <span class="company_dashboard_aside_header_openclose_button"
+                [ngClass]="{'sidebar_toggled': sideBarToggled, 'sidebar_collapsed': !sideBarToggled }"
+                (click)="toggleSideBar()">
+                    &#9776;
+            </span>
+            <div class="company_dashboard_aside_header_companyName" *ngIf='sideBarToggled'>
+                {{companyName}}
+            </div>
+        </div>
+        <div class="company_dashboard_aside_menu"></div>
+    </div>
+    <div class="company_dashboard_content">
+        <div class="company_dashboard_content_header"></div>
+        <div class="company_dashboard_content_content"></div>
+    </div>
+</div>-->

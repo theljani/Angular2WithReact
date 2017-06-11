@@ -7,8 +7,7 @@ import {MainComponent} from './main-component/main.component';
 import {ProductsFilterPipe} from './main-component/_pipes/products.filter.pipe';
 import {AccountModule} from './account/account.module';
 import {DashboardModule} from './dashboard/dashboard.module';
-import {HeaderComponent} from './common/header/header.component';
-import {headerActions} from './common/header/_store/actions';
+
 
 @NgModule({
   imports: [
@@ -16,23 +15,17 @@ import {headerActions} from './common/header/_store/actions';
     RouterModule.forRoot([
       {
         path: 'home', component: HomeComponent,
-      },
-      {
-        path: '', component: HomeComponent,
       }
     ]),
     AccountModule,
     DashboardModule
   ],
   declarations: [
-    HeaderComponent,
     MainComponent,
     HomeComponent,
     ProductsFilterPipe
   ],
-  providers: [
-    headerActions
-  ],
+  providers: [],
   bootstrap: [MainComponent]
 })
 export class MainModule {

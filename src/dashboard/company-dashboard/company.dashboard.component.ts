@@ -6,15 +6,15 @@ import {ActivatedRoute} from '@angular/router';
     templateUrl: '_templates/company.dashboard.html',
     styleUrls: ['_styles/company.dashboard.css']
 })
-export class CompanyDashboardComponent implements OnInit {
-    companyName: string;
+export class CompanyDashboardComponent {
+    companyName: string = "H-DAYS";
     sideBarToggled: boolean;
 
     constructor(private _route: ActivatedRoute){}
 
-    ngOnInit(): void {
-        this.companyName = this._route.snapshot.data['companyData'].companyName;
-    }
+    // ngOInit(): void {
+    //    // this.companyName = this._route.snapshot.data['companyData'].companyName;
+    // }
 
     toggleSideBar(): void {
         this.sideBarToggled = !this.sideBarToggled;
@@ -22,8 +22,8 @@ export class CompanyDashboardComponent implements OnInit {
 
     getSidebarWidth(): number {
         if(this.sideBarToggled) 
-            return 300;
+            return 220;
         
-        return 50;
+        return 60;
     }
 }
