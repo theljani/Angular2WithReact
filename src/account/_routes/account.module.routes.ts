@@ -13,10 +13,10 @@ import {CanActivateRegisterGuard} from '../register/_guards/canActivateGuard';
 
 export const AccountModuleRoutes: Routes = [
     {
-        path:'account/signin', component: AccountSigninComponent, canActivate: [CanActivateSigninGuard]
+        path: 'account/signin', component: AccountSigninComponent, canActivate: [CanActivateSigninGuard]
     },
     {
-        path:'account/register', component: AccountRegisterComponent, canActivate: [CanActivateRegisterGuard],
+        path: 'account/register', component: AccountRegisterComponent, canActivate: [CanActivateRegisterGuard],
         children: [
             { path: '',  component: AccountRegisterWizardCompanyInfoComponent},
             { path: 'companyInfo',  component: AccountRegisterWizardCompanyInfoComponent},
@@ -25,6 +25,6 @@ export const AccountModuleRoutes: Routes = [
         ]
     },
     {
-        path:'', component: AccountSigninComponent, canActivate: [CanActivateSigninGuard]
+        path: '', component: AccountSigninComponent, canActivate: [CanActivateSigninGuard]
     },
 ];

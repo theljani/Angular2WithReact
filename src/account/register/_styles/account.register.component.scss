@@ -2,6 +2,14 @@
     margin-top: 10% ;
 }
 
+.register__errors__block {
+    background: white;
+    padding: 10px 10px;
+    height: 43px;
+    border: 1px solid red;
+    color: red;
+}
+
 .register_wizard {
   padding: 0px 40px 20px 40px;
   display: inline-block;
@@ -61,3 +69,4 @@
         text-decoration: none;
     }
 }
+

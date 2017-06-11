@@ -7,6 +7,8 @@ import {AccountRegisterService} from '../_services/account.register.wizard.state
 export const USER_DETAILS_FORM_UPDATED = "USER_DETAILS_FORM_UPDATED";
 export const COMPANY_DETAILS_FORM_UPDATED = "COMPANY_DETAILS_FORM_UPDATED";
 export const ACCOUNT_DETAILS_FORM_UPDATED = "ACCOUNT_DETAILS_FORM_UPDATED";
+export const REGISTER_SUCCEEDED = "RESGISTER_SUCCEEDED";
+export const REGISTER_FAILED = "REGISTER_FAILED";
 
 @Injectable()
 export class registerActions {
@@ -38,12 +40,17 @@ export class registerActions {
         this._registerService.register(registerState.registerEntity)
             .map(result => result.json())
             .subscribe(data => {
-                            debugger
-                            console.log(data);
+                debugger
+                            registerStore.dispatch({
+                                type: REGISTER_SUCCEEDED,
+                                paylaod: Object.assign({}, data)
+                            });
                         },
                         error => {
-                            debugger
-                            console.log(error);
+                            registerStore.dispatch({
+                                type: REGISTER_FAILED,
+                                paylaod: Object.assign({}, error.json())
+                            });
                         }
             );
     }

@@ -67,13 +67,14 @@ export class AccountSigninComponent implements OnInit {
             this.signInResponse = signinStore.getState();
 
             if(this.signInResponse.ok) {
+                debugger
                 this._cookiesService.set("Login", this.login, 15);       
                 this._cookiesService.set("Password", this.password, 15);
-                this._router.navigate(['/company', 1, "dashboard"]);
+                this._router.navigate(['/company', this.signInResponse.responseDetails.companyInfo.companyCode, "dashboard"]);
             } else {
-                this.backendError = this.signInResponse.signinEntity.error;
+                this.backendError = this.signInResponse.responseDetails.error;
             }
-        })
+        });
     }
 
     setValidationForLogin(control: AbstractControl) : void {

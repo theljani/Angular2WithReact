@@ -7,6 +7,7 @@ import {ActivatedRoute} from '@angular/router';
     styleUrls: ['_styles/company.dashboard.css']
 })
 export class CompanyDashboardComponent {
+
     companyName: string = "H-DAYS";
     sideBarToggled: boolean;
 

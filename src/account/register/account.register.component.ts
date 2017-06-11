@@ -22,6 +22,7 @@ export class AccountRegisterComponent implements OnInit {
     @ViewChild(WizardStepperComponent) wizardStepperChild: WizardStepperComponent;
     activeStep: Step = null;
     registerEntity: CompanyRegister;
+    backendError: string;
 
     steps: Step[] = [
         {
@@ -55,6 +56,30 @@ export class AccountRegisterComponent implements OnInit {
         private registerWizardState: AccountRegisterService) {
     }
     
+    ngOnInit(): void {
+        this.activeStep = this.steps[0];
+        // this.updateFromState();
+
+        // registerStore.subscribe(() => {
+        //     this.updateFromState();
+        // });
+
+        this._router.navigate([this.activeStep.contentRoute]);
+
+        registerStore.subscribe(() => {
+            var registerResponse = registerStore.getState();
+
+            if(registerResponse.from) {
+                registerResponse.from = undefined;
+                if(registerResponse.ok) {
+                    this._router.navigate(['/account/signin']);
+                }  else {
+                    this.backendError = registerResponse.responseDetails.error;
+                }
+            }
+        });
+    }
+
     Next():void {
         var nextStepNumber = this.activeStep.nextStep;
 
@@ -137,16 +162,5 @@ export class AccountRegisterComponent implements OnInit {
         const registerFormState = registerStore.getState();
         this.registerEntity = registerFormState.registerEntity;
         return registerFormState;
-    }
-
-    ngOnInit(): void {
-        this.activeStep = this.steps[0];
-        // this.updateFromState();
-
-        // registerStore.subscribe(() => {
-        //     this.updateFromState();
-        // });
-
-        this._router.navigate([this.activeStep.contentRoute]);
     }
 }

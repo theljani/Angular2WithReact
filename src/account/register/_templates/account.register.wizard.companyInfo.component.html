@@ -14,19 +14,6 @@
         </div>
 
         <div class="form-group"
-            [ngClass]="{'has-error': companyCodeErrorMessage }">
-            <input type="text"
-                [(ngModel)]="companyInfo.companyCode"
-                (ngModelChange)="ngOnChanges($event)"
-                formControlName="companyCode"
-                class="form-control" placeholder="Code" />
-
-                <span class="help-block" *ngIf="companyCodeErrorMessage">
-                    {{companyCodeErrorMessage}}
-                </span>
-        </div>
-
-        <div class="form-group"
             [ngClass]="{'has-error': companyPhoneNumberError }">
             <input type="text"
                 [(ngModel)]="companyInfo.phoneNumber"
