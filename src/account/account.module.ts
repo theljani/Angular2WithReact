@@ -15,6 +15,10 @@ import {AccountRegisterWizardCompanyAddressComponent} from './register/_subCompo
 import {AccountRegisterWizardCompanyInfoComponent} from './register/_subComponents/account.register.wizard.companyInfo.component';
 import {AccountRegisterWizardAccountDetailsComponent} from './register/_subComponents/account.register.wizard.accountDetails.component';
 
+// Bootstrap UI
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
 // Import Services
 import {AccountSigninService} from './signin/_services/account.signin.service';
 import {AccountRegisterService} from './register/_services/account.register.wizard.state.service';
@@ -32,7 +36,8 @@ import {AccountModuleRoutes} from './_routes/account.module.routes';
         ReactiveFormsModule,     
         FormsModule,
         HttpModule,
-        RouterModule.forRoot(AccountModuleRoutes)
+        RouterModule.forRoot(AccountModuleRoutes),
+        NgbModule.forRoot()
     ],
     declarations: [
         AccountSigninComponent,

@@ -2,7 +2,7 @@
     <form [formGroup]="accountDetailsForm">
         
         <div class="form-group" 
-            [ngClass]="{'has-error': loginErrorMessage}">
+            [ngClass]="{'has-danger': loginErrorMessage}">
             <input 
                 type="text"
                 formControlName="login"
@@ -11,33 +11,33 @@
                 class="form-control" 
                 placeholder="E-mail" />
             
-            <span class="help-block" *ngIf="loginErrorMessage">
+            <span class="form-control-feedback" *ngIf="loginErrorMessage">
                 {{loginErrorMessage}}
             </span>
         </div>
         <div formGroupName="passwordGroup">
             <div class="form-group" 
-                [ngClass]="{'has-error': passwordErrorMessage}">
+                [ngClass]="{'has-danger': passwordErrorMessage}">
 
                 <input type="password" 
                 formControlName="password" 
                 [(ngModel)]="accountDetails.password"
                 (ngModelChange)="ngOnChanges($event)"
                 class="form-control" placeholder="Password" />
-                <span class="help-block" *ngIf="passwordErrorMessage">
+                <span class="form-control-feedback" *ngIf="passwordErrorMessage">
                     {{passwordErrorMessage}}
                 </span>
             </div>
 
             <div class="form-group" 
-                [ngClass]="{'has-error': confirmPasswordErrorMessage}">
+                [ngClass]="{'has-danger': confirmPasswordErrorMessage}">
 
                 <input type="password" 
                 formControlName="confirmPassword" 
                 [(ngModel)]="accountDetails.confirmPassword"
                 (ngModelChange)="ngOnChanges($event)"
                 class="form-control" placeholder="Confirm password" />
-                <span class="help-block" *ngIf="confirmPasswordErrorMessage">
+                <span class="form-control-feedback" *ngIf="confirmPasswordErrorMessage">
                     {{confirmPasswordErrorMessage}}
                 </span>
             </div>

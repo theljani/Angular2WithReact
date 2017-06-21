@@ -1,40 +1,38 @@
 <div class="signin">
-    <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12">
-        <div class="signin__errors__block help-block" *ngIf="backendError">
-            <span class="has-error"> 
-                {{backendError}}
-            </span>
+    <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-xs-12">
+        <div class="no-radius form-control-feedback" *ngIf="backendError">
+            <ngb-alert type="danger" [dismissible]="false">
+                <strong>Error!</strong> {{backendError}}
+            </ngb-alert>
         </div>
-        <div class="panel">
             <!--<div class="panel-heading">Se connecter</div>-->
-            <div class="panel-body signin-panel">
-                <form [formGroup]='signinFormGroup' class="signin__form">
-                    <div class="form-group" [ngClass]="{'has-error': loginErrorMessage}">
-                        <input type="text"  
-                            [(ngModel)] = "login"
-                            formControlName = "login"
-                            class="form-control" placeholder="E-mail">
-                            <span class="help-block" *ngIf="loginErrorMessage">
-                                {{loginErrorMessage}}
-                            </span>
-                    </div>
-                    <div class="form-group" [ngClass]="{'has-error': passwordErrorMessage}">
-                        <input type="password" 
-                            [(ngModel)] = "password" 
-                            formControlName="password"
-                            class="form-control" placeholder="Password">
+        <div class="signin-panel">
+            <form [formGroup]='signinFormGroup' class="signin__form">
+                <div class="form-group" [ngClass]="{'has-danger': loginErrorMessage}">
+                    <input type="text"  
+                        [(ngModel)] = "login"
+                        formControlName = "login"
+                        class="form-control" placeholder="E-mail">
+                        <span class="form-control-feedback" *ngIf="loginErrorMessage">
+                            {{loginErrorMessage}}
+                        </span>
+                </div>
+                <div class="form-group" [ngClass]="{'has-danger': passwordErrorMessage}">
+                    <input type="password" 
+                        [(ngModel)] = "password" 
+                        formControlName="password"
+                        class="form-control" placeholder="Password">
 
-                            <span class="help-block" *ngIf="passwordErrorMessage">
-                                {{passwordErrorMessage}}
-                            </span>
-                    </div>
-                    <div class="form-group signin__form__connectButton">
-                        <button class="btn pull-right" 
-                        [disabled]="!signinFormGroup.valid"
-                        (click)="signIn()">Se connecter</button>
-                    </div>
-                </form>
-            </div>
+                        <span class="form-control-feedback" *ngIf="passwordErrorMessage">
+                            {{passwordErrorMessage}}
+                        </span>
+                </div>
+                <div class="form-group signin__form__connectButton">
+                    <button class="btn float-right" 
+                    [disabled]="!signinFormGroup.valid"
+                    (click)="signIn()">Se connecter</button>
+                </div>
+            </form>
         </div>
         <div class="register_link">
             <span>Don't you have an account yet? <b class="signin__registerInstruction"><a [routerLink]="['/account/register']">Register!</a></b></span>           

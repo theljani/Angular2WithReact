@@ -119,7 +119,7 @@ export class AccountRegisterComponent implements OnInit {
     Confirm(): void {
         this.activeStep.state = 'done';
         let state = this.updateFromState();
-        
+        this.backendError= undefined;
         this.actionsDispatcher.createAccount(state);
     }
 

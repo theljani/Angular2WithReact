@@ -1,27 +1,27 @@
 <div class="register_wizard_companyDetails">
     <form [formGroup]="companyInfoForm">
         <div class="form-group"
-        [ngClass]="{'has-error': companyNameErrorMessage}">
+        [ngClass]="{'has-danger': companyNameErrorMessage}">
             <input type="text"
                 [(ngModel)]="companyInfo.name"
                 (ngModelChange)="ngOnChanges($event)"
                 formControlName="name"
                 class="form-control" placeholder="Name" />
 
-                <span class="help-block" *ngIf="companyNameErrorMessage">
+                <span class="form-control-feedback" *ngIf="companyNameErrorMessage">
                     {{companyNameErrorMessage}}
                 </span>
         </div>
 
         <div class="form-group"
-            [ngClass]="{'has-error': companyPhoneNumberError }">
+            [ngClass]="{'has-danger': companyPhoneNumberError }">
             <input type="text"
                 [(ngModel)]="companyInfo.phoneNumber"
                 (ngModelChange)="ngOnChanges($event)"
                 formControlName="phoneNumber"
                 class="form-control" placeholder="Phone number" />
 
-                <span class="help-block" *ngIf="companyPhoneNumberError">
+                <span class="form-control-feedback" *ngIf="companyPhoneNumberError">
                     {{companyPhoneNumberError}}
                 </span>
         </div>

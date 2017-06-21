@@ -1,47 +1,47 @@
 <div class="register_wizard_userDetails">
     <form [formGroup]="companyAddressForm">
         <div class="form-group"
-         [ngClass]="{'has-error': addressLineErrorMessage}">
+         [ngClass]="{'has-danger': addressLineErrorMessage}">
             <input type="text" 
             [(ngModel)]="companyAddress.addressLine"
             (ngModelChange)="ngOnChanges($event)"
             formControlName="addressLine" class="form-control" placeholder="Address line">
-            <span class="help-block" *ngIf="addressLineErrorMessage">
+            <span class="form-control-feedback" *ngIf="addressLineErrorMessage">
                 {{addressLineErrorMessage}}
             </span>        
         </div>
 
         <div class="form-group"
-            [ngClass]="{'has-error': postalCodeErrorMessage}">
+            [ngClass]="{'has-danger': postalCodeErrorMessage}">
             <input type="text" 
             [(ngModel)]="companyAddress.postalCode"
             (ngModelChange)="ngOnChanges($event)"
             formControlName="postalCode" class="form-control" placeholder="Postal code">
-            <span class="help-block" *ngIf="postalCodeErrorMessage">
+            <span class="form-control-feedback" *ngIf="postalCodeErrorMessage">
                 {{postalCodeErrorMessage}}
             </span>    
         </div>
 
         <div class="form-group"
-            [ngClass]="{'has-error': cityErrorMessage}">
+            [ngClass]="{'has-danger': cityErrorMessage}">
             <input type="text" 
             [(ngModel)]="companyAddress.city"
             (ngModelChange)="ngOnChanges($event)"
             formControlName="city" class="form-control" placeholder="City">
 
-            <span class="help-block" *ngIf="cityErrorMessage">
+            <span class="form-control-feedback" *ngIf="cityErrorMessage">
                 {{cityErrorMessage}}
             </span>    
         </div>
 
         <div class="form-group"
-            [ngClass]="{'has-error': countryErrorMessage}">
+            [ngClass]="{'has-danger': countryErrorMessage}">
             <input type="text" 
             [(ngModel)]="companyAddress.country"
             (ngModelChange)="ngOnChanges($event)"
             formControlName="country" class="form-control" placeholder="Country">
 
-            <span class="help-block" *ngIf="countryErrorMessage">
+            <span class="form-control-feedback" *ngIf="countryErrorMessage">
                 {{countryErrorMessage}}
             </span>  
         </div>

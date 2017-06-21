@@ -6,16 +6,17 @@ import {ActivatedRoute} from '@angular/router';
     templateUrl: '_templates/company.dashboard.html',
     styleUrls: ['_styles/company.dashboard.css']
 })
-export class CompanyDashboardComponent {
+export class CompanyDashboardComponent implements OnInit {
 
-    companyName: string = "H-DAYS";
+    accountData: any;
     sideBarToggled: boolean;
 
     constructor(private _route: ActivatedRoute){}
 
-    // ngOInit(): void {
-    //    // this.companyName = this._route.snapshot.data['companyData'].companyName;
-    // }
+    ngOnInit(): void {
+       this.accountData = this._route.snapshot.data['companyData'];
+       alert(JSON.stringify(this.accountData));
+    }
 
     toggleSideBar(): void {
         this.sideBarToggled = !this.sideBarToggled;

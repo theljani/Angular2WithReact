@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 
@@ -18,7 +18,7 @@ import {DashboardModule} from './dashboard/dashboard.module';
       }
     ]),
     AccountModule,
-    DashboardModule
+    DashboardModule,
   ],
   declarations: [
     MainComponent,

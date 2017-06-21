@@ -1,11 +1,12 @@
 .signin {
   margin: 10% 0;
   font-family: 'Gotham SSm', sans-serif; 
+
+  ngb-alert .alert {
+    border-radius: 0;
+  }
 }
 
-.signin .panel {
-  border-radius: 0px; 
-}
         
 .signin .signin__form {
   padding: 0 30px;
@@ -40,9 +41,10 @@
 .register_link {
   background: white;
   text-align: center;
-  padding: 30px 0;
+  padding: 30px 5px;
   height: 80px;
   border: 1px solid #e6e6e6;
+  font-size: 15px;
 }
 
 .signin_form {
@@ -50,7 +52,10 @@
 }
 
 .signin-panel {
-      border: 1px solid #e6e6e6;
+  border: 1px solid #e6e6e6;
+  background: white; 
+  margin-bottom: 20px;
+  min-height: 200px;
 }
 
 .signin__errors__block {
@@ -59,6 +64,7 @@
     height: 43px;
     border: 1px solid red;
     color: red;
+    margin-bottom: 10px;
 }
 
 
@@ -71,4 +77,8 @@
       width: 100%;
     }
   }
+}
+
+.no-radius {
+    border-radius: 0;
 }
