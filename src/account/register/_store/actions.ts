@@ -40,7 +40,6 @@ export class registerActions {
         this._registerService.register(registerState.registerEntity)
             .map(result => result.json())
             .subscribe(data => {
-                debugger
                             registerStore.dispatch({
                                 type: REGISTER_SUCCEEDED,
                                 paylaod: Object.assign({}, data)

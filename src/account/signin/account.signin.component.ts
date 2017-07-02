@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import { CookieService } from 'ng2-cookies';
 
 import {AccountSigninService} from './_services/account.signin.service'
-import {ISigninEntity} from './_entities/signinEntity';
+import {ISignin} from './_entities/ISignin';
 import {signinActions} from './_store/actions';
 import {ISigninState} from './_store/signinState';
 import {signinStore} from './_store/store';

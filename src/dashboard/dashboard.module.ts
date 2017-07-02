@@ -5,16 +5,20 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {HttpModule} from '@angular/http';
 
-//
-import {CompnayDashboardRoutes} from './_routes/company.dashboard.routes';
-import {CompanyDashboardComponent} from './company-dashboard/company.dashboard.component';
-
+// Components
+import {CompnayDashboardRoutes} from './_routes/dashboard.routes';
+import {DashboardComponent} from './dashboard.component';
+import {SpinnerComponent} from '../common/spinner/spinner.component';
 import {HeaderComponent} from '../common/header/header.component';
+
 import {headerActions} from '../common/header/_store/actions';
 
 // Guards
-import {CompanyDashboardCanActivate} from "./company-dashboard/_guards/company.dashboard.canactivate";
-import {CompanyDashboardDataResolver} from './company-dashboard/_guards/company.dashboard.data.resolver';
+import {DashboardCanActivate} from "./_guards/dashboard.canactivate";
+import {DashboardDataResolver} from './_guards/dashboard.data.resolver';
+
+import {DashboardActions} from '../dashboard/_store/actions';
+import {DashboardServices} from '../dashboard/_services/dashboard.services';
 
 @NgModule({
     imports: [
@@ -24,7 +28,7 @@ import {CompanyDashboardDataResolver} from './company-dashboard/_guards/company.
         ReactiveFormsModule,
         RouterModule.forRoot(CompnayDashboardRoutes)
     ],
-    declarations: [HeaderComponent, CompanyDashboardComponent],
-    providers: [headerActions, CompanyDashboardCanActivate, CompanyDashboardDataResolver]
+    declarations: [HeaderComponent, DashboardComponent, SpinnerComponent],
+    providers: [headerActions, DashboardCanActivate, DashboardDataResolver, DashboardActions, DashboardServices]
 })
 export class DashboardModule {}

@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import {ISigninEntity} from '../_entities/signinEntity';
+import {ISignin} from '../_entities/ISignin';
 
 
 @Injectable()
@@ -14,7 +14,7 @@ export class AccountSigninService {
 
     }
 
-    signIn(signinModel: ISigninEntity) :  Observable<any> {
+    signIn(signinModel: ISignin) :  Observable<any> {
         return this._http.post(this._signInUrl, signinModel);
         //.catch(this.handleError);
     }

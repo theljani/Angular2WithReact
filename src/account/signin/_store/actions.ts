@@ -16,23 +16,15 @@ export class signinActions {
 
     signin(state: ISigninState) : boolean {
         let signinResult;
+        debugger
         this._signinService.signIn(state.signinEntity)
             .map(result => result.json())
             .subscribe(data => {
                             signinResult = true;
-                            headerStore.dispatch({
-                                type: SIGNIN_SUCCESS,
-                                payload: [
-                                        {
-                                            "label": "Profile",
-                                            "route": "/account/signin"
-                                        }
-                                    ]
-                            });
 
                             signinStore.dispatch({
                                 type: SIGNIN_SUCCESS,
-                                payload: Object.assign({}, data)
+                                payload: data
                             });
 
 
@@ -41,7 +33,7 @@ export class signinActions {
                             signinResult = false;
                             signinStore.dispatch({
                                 type: SIGNIN_FAILURE,
-                                payload: Object.assign({}, error.json())
+                                payload: Object.assign(state, error.json())
                             });
                             
                         }

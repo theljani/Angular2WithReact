@@ -7,7 +7,7 @@
                     &#9776;
             </span>
             <div class="company_dashboard_sidebar_companyName"
-            *ngIf='sideBarToggled'>
+            *ngIf='sideBarToggled && companyName'>
                 {{companyName}}
             </div>
         </div>
@@ -24,8 +24,18 @@
         <div class="company_dashboard_content_header">
             <hd-header></hd-header>
         </div>
-        <div class="company_dashboard_content_content">
+        
+        <div *ngIf="!accountData">
+            <hd-spinner></hd-spinner>
+        </div>
+        <div class="company_dashboard_content_content" *ngIf="accountData">
             <h1>Content</h1>
+            <div *ngIf="accountData">
+                <h2>{{accountData.companyInfo.name}}</h2>
+                <h3>
+                    {{accountData.accountDetails.login}}
+                </h3>
+            </div>
         </div>
     </div>
 </div>

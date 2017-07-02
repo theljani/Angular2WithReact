@@ -3,7 +3,7 @@ import {CanActivate} from '@angular/router';
 import {CookieService} from 'ng2-cookies';
 
 @Injectable()
-export class CompanyDashboardCanActivate implements CanActivate {
+export class DashboardCanActivate implements CanActivate {
 
     constructor(private _cookiesService: CookieService) {}
 

@@ -1,4 +1,4 @@
-export interface ISigninEntity {
+export interface ISignin {
     login: string;
     password: string;
 }
